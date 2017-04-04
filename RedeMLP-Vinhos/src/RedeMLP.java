@@ -29,7 +29,17 @@ public class RedeMLP {
 		double x10[] = new double[2];
 		//alcohol
 		double x11[] = new double[2];
+		//quality
+		double  d[] = new double[2];
 		
+		
+		//treinamento
+		int epocas = 0, i;
+		double y, erro, erroGeral;
+		double eta = 0.1d; 
+		
+		
+		System.out.println("--- TREINAMENTO");
 		
 		
 		
