@@ -11,16 +11,16 @@ public class Neuronio {
 	}
 	
 	
-	public void setW(int neuNumber){
-		this.w[neuNumber] = w[neuNumber];		
+	public void setW(int neuNumber, double value){
+		this.w[neuNumber] = value;		
 	}
 
-	public void setG(int neuNumber){
-		this.g[neuNumber] = g[neuNumber];		
+	public void setG(int neuNumber, double value){
+		this.g[neuNumber] = value;		
 	}
 	
-	public void setDelta(int neuNumber){
-		this.delta[neuNumber] = delta[neuNumber];		
+	public void setDelta(int neuNumber, double value){
+		this.delta[neuNumber] = value;		
 	}
 	
 	
