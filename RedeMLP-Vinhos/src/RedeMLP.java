@@ -7,18 +7,29 @@ public class RedeMLP {
 		//densidade vem bugada no excel e no libreoffice
 		// a saída do programa é a quality
 		
+		//fixed acidity
 		double x1[] = new double[2];
+		//volatile acidity
 		double x2[] = new double[2];
+		//citric acid
 		double x3[] = new double[2];
+		//residual sugar
 		double x4[] = new double[2];
+		//chlorides
 		double x5[] = new double[2];
+		//free sulfur dioxide
 		double x6[] = new double[2];
+		//total sulfur dioxide
 		double x7[] = new double[2];
+		//density
 		double x8[] = new double[2];
+		//pH
 		double x9[] = new double[2];
+		//sulphates
 		double x10[] = new double[2];
+		//alcohol
 		double x11[] = new double[2];
-		double x12[] = new double[2];
+		
 		
 		
 		
