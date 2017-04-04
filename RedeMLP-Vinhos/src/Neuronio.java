@@ -23,7 +23,12 @@ public class Neuronio {
 		this.delta[neuNumber] = value;		
 	}
 	
-	public double calculaV(){
+	public double calculaVsaida(){
+		double v=0;
+		return v;
+	}
+	
+	public double calculaVoculta(){
 		double v=0;
 		return v;
 	}
