@@ -7,7 +7,7 @@ public class RedeMLP {
 		//densidade vem bugada no excel e no libreoffice
 		// a saída do programa é a quality
 		
-		Neuronio neuronio = new Neuronio();
+		Neuronio neuronioSaida = new Neuronio();
 		
 		//fixed acidity
 		double x1[] = new double[2];
@@ -39,10 +39,10 @@ public class RedeMLP {
 		int epocas = 0, i;
 		double y, erro, erroGeral;
 		double eta = 0.1d; 
-		
+		double entrada1=0;
 		
 		System.out.println("--- TREINAMENTO");
-		
+		y = neuronioSaida.calculaVoculta(1, 11, entrada1);
 		
 		
 		
