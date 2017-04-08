@@ -7,14 +7,23 @@ public class Neuronio {
 	private double g[] = new double [415];
 	private double v[] = new double [4];
 	
+	public void zeraV(){
+		for (int i=0; i<4; i++){
+			this.v[i] = 0;			
+		}
+	}
+	
+	public double getVoculta(int posV){
+		return v[posV];
+	}
 	
 	public double  getW(int neuNumber){
 		return w[neuNumber];		
 	}
 	
 	
-	public void setW(int neuNumber, double value){
-		this.w[neuNumber] = value;		
+	public void setW(int wNumber, double value){
+		this.w[wNumber] = value;		
 	}
 
 	public void calculaG(int neuNumber, double value){
@@ -34,7 +43,6 @@ public class Neuronio {
 	
 	public double calculaVoculta(int vNumber, int wNumber, double x){
 		this.v[vNumber] = this.w[wNumber] * x + this.v[vNumber];
-
 		return v[vNumber];
 	}
 	
