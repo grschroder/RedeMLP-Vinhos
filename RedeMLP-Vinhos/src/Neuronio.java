@@ -196,17 +196,17 @@ public class Neuronio {
 		
 		if (vNumber == 1){	
 			this.v[vNumber] = this.w[10] * this.x[0] + this.w[11] * this.x[1] + this.w[12] * this.x[2] + this.w[13] * this.x[3] + this.w[14] * this.x[4] + this.w[15] * this.x[5] + this.w[16] * this.x[6] + this.w[17] * this.x[7] + this.w[18] * this.x[8] + this.w[19] * this.x[9] + this.w[110] * this.x[10] + this.w[111] * this.x[11] ;
-			System.out.println("*** V1 = "+this.v[1]);
+			//System.out.println("*** V1 = "+this.v[1]);
 		} 
 		
 		else if (vNumber == 2){	
 			this.v[vNumber] = this.w[20] * this.x[0] + this.w[21] * this.x[1] + this.w[22] * this.x[2] + this.w[23] * this.x[3] + this.w[24] * this.x[4] + this.w[25] * this.x[5] + this.w[26] * this.x[6] + this.w[27] * this.x[7] + this.w[28] * this.x[8] + this.w[29] * this.x[9] + this.w[210] * this.x[10] + this.w[211] * this.x[11] ;
-			System.out.println("*** V2 = "+this.v[2]);
+			//System.out.println("*** V2 = "+this.v[2]);
 		}
 		
 		else if (vNumber == 3){	
 			this.v[vNumber] = this.w[30] * this.x[0] + this.w[31] * this.x[1] + this.w[32] * this.x[2] + this.w[33] * this.x[3] + this.w[34] * this.x[4] + this.w[35] * this.x[5] + this.w[36] * this.x[6] + this.w[37] * this.x[7] + this.w[38] * this.x[8] + this.w[39] * this.x[9] + this.w[310] * this.x[10] + this.w[311] * this.x[11] ;
-			System.out.println("*** V3 = "+this.v[3]);
+			//System.out.println("*** V3 = "+this.v[3]);
 		}
 		
 		return v[vNumber];
@@ -217,6 +217,7 @@ public class Neuronio {
 		this.y[posV] = 1/1 + Math.exp(1.7159*this.v[posV]);		
 	}
 	
-	
+	public void printPesos(){
+	}
 	
 }

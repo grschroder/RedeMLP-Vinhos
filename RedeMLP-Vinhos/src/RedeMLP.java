@@ -92,32 +92,46 @@ public class RedeMLP {
 		// calcula do erro
 		//erro = d[i] - y;
 		
-		erro = neuronioSaida.getD() - neuronioSaida.getY(4);
+		//while(true){
+			erro = neuronioSaida.getD() - neuronioSaida.getY(4);
+			
+			if(erro != 0){
+				System.out.println("---- Erro: "+ erro);
+				neuronioSaida.calculaGSaida(4, erro);
+				System.out.println("---- G4: "+ neuronioSaida.getG(4));
+			
+				neuronioSaida.calculaDelta(4, eta);
+				neuronioSaida.ajusteDePesos(4);
+				
+				neuronioSaida.calculaDelta(1, eta);
+				neuronioSaida.calculaDelta(2, eta);
+				neuronioSaida.calculaDelta(3, eta);
+				
+				neuronioSaida.calculaGoculta(1);
+				neuronioSaida.calculaGoculta(2);
+				neuronioSaida.calculaGoculta(3);
+				
+				neuronioSaida.ajusteDePesos(1);
+				neuronioSaida.ajusteDePesos(2);
+				neuronioSaida.ajusteDePesos(3);
+			}
+			else if (erro == 0){
+				System.out.println("	W10	: 	"	+	neuronioSaida.getW(10));
+				System.out.println("	W11	: 	"	+	neuronioSaida.getW(	11	))	;
+				System.out.println("	W12	: 	"	+	neuronioSaida.getW(	12	))	;
+				System.out.println("	W13	: 	"	+	neuronioSaida.getW(	13	))	;
+				System.out.println("	W14	: 	"	+	neuronioSaida.getW(	14	))	;
+				System.out.println("	W15	: 	"	+	neuronioSaida.getW(	15	))	;
+				System.out.println("	W16	: 	"	+	neuronioSaida.getW(	16	))	;
+				System.out.println("	W17	: 	"	+	neuronioSaida.getW(	17	))	;
+				System.out.println("	W18	: 	"	+	neuronioSaida.getW(	18	))	;
+				System.out.println("	W19	: 	"	+	neuronioSaida.getW(	19	))	;
+
+				//break;
+			}
+			
 		
-		if(erro != 0){
-			System.out.println("---- Erro: "+ erro);
-			neuronioSaida.calculaGSaida(4, erro);
-			System.out.println("---- G4: "+ neuronioSaida.getG(4));
-			
-			neuronioSaida.calculaDelta(4, eta);
-			neuronioSaida.ajusteDePesos(4);
-			
-			neuronioSaida.calculaDelta(1, eta);
-			neuronioSaida.calculaDelta(2, eta);
-			neuronioSaida.calculaDelta(3, eta);
-			
-			neuronioSaida.calculaGoculta(1);
-			neuronioSaida.calculaGoculta(2);
-			neuronioSaida.calculaGoculta(3);
-			
-			neuronioSaida.ajusteDePesos(1);
-			neuronioSaida.ajusteDePesos(2);
-			neuronioSaida.ajusteDePesos(3);
-			
-			
-		}
-		
-		
+		//}
 	}
 
 }
