@@ -128,6 +128,7 @@ public class RedeMLP {
 				System.out.println("	W19	: 	"	+	neuronioSaida.getW(	19	))	;
 
 				
+				
 				//break;
 			}
 			
