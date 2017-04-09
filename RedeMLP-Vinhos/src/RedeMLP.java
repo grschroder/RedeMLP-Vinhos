@@ -127,6 +127,7 @@ public class RedeMLP {
 				System.out.println("	W18	: 	"	+	neuronioSaida.getW(	18	))	;
 				System.out.println("	W19	: 	"	+	neuronioSaida.getW(	19	))	;
 
+				
 				//break;
 			}
 			
