@@ -56,10 +56,22 @@ public class RedeMLP {
 		y = neuronioSaida.calculaVoculta(2, 22, 0.443037975);
 		y = neuronioSaida.calculaVoculta(2, 23, 0.122580645);
 		
-		System.out.println("--- V1 = "+neuronioSaida.getVoculta(1));
-		System.out.println("--- V2 = "+neuronioSaida.getVoculta(2));
-				
+		neuronioSaida.calculaY(2);
+		neuronioSaida.calculaY(1);
 		
+		System.out.println("--- V1 = "+neuronioSaida.getV(1));
+		System.out.println("--- Y1 = "+neuronioSaida.getY(1));
+		System.out.println("--- V2 = "+neuronioSaida.getV(2));
+		System.out.println("--- Y2 = "+neuronioSaida.getY(2));
+		
+		neuronioSaida.calculaVsaida(4, 41, 1);
+		neuronioSaida.calculaVsaida(4, 42, 2);
+		neuronioSaida.calculaVsaida(4, 43, 3);
+		
+		neuronioSaida.calculaY(4);
+		
+		System.out.println("--- V4 = "+neuronioSaida.getV(4));
+		System.out.println("--- Y4 = "+neuronioSaida.getY(4));
 		//neuronio.setW0(neuronio.getW0() + eta * erro);
 		
 		
