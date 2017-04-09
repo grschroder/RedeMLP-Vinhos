@@ -40,39 +40,82 @@ public class RedeMLP {
 		//treinamento
 		int epocas = 0, i;
 		double y, erro, erroGeral;
-		double eta = 0.1d; 
+		double eta = 1d; 
 		double entrada1=0;
 		
 		//System.out.println("--- TREINAMENTO");
 		neuronioSaida.zeraV();
 		
-		neuronioSaida.setW(11, 1);
+		neuronioSaida.setW(10, 1);
+		neuronioSaida.setW(20, 1);
+		neuronioSaida.setW(30, 1);
+		neuronioSaida.setW(40, 1);
 		
-		y = neuronioSaida.calculaVoculta(1, 11, 0.465408805);
-		y = neuronioSaida.calculaVoculta(1, 12, 0.443037975);
-		y = neuronioSaida.calculaVoculta(1, 13, 0.122580645);
+		neuronioSaida.setX(0, 1);
+		neuronioSaida.setX(1, 0.465408805);
+		neuronioSaida.setX(2, 0.443037975);
+		neuronioSaida.setX(3, 0.122580645);		
+		neuronioSaida.setX(4, 0.122580645);
+		neuronioSaida.setX(5, 0.076000000);
+		neuronioSaida.setX(6, 0.152777778);
+		neuronioSaida.setX(7, 0.117647059);
+		neuronioSaida.setX(8, 0.997800000);
+		neuronioSaida.setX(9, 0.877500000);
+		neuronioSaida.setX(10, 0.280000000);
+		neuronioSaida.setX(11, 0.671428571);		
+		neuronioSaida.setD(0.625);
 		
-		y = neuronioSaida.calculaVoculta(2, 21, 0.465408805);
-		y = neuronioSaida.calculaVoculta(2, 22, 0.443037975);
-		y = neuronioSaida.calculaVoculta(2, 23, 0.122580645);
+		neuronioSaida.calculaVoculta(1);
+		neuronioSaida.calculaVoculta(2);
+		neuronioSaida.calculaVoculta(3);
 		
-		neuronioSaida.calculaY(2);
 		neuronioSaida.calculaY(1);
+		neuronioSaida.calculaY(2);
+		neuronioSaida.calculaY(3);
+		
 		
 		System.out.println("--- V1 = "+neuronioSaida.getV(1));
 		System.out.println("--- Y1 = "+neuronioSaida.getY(1));
 		System.out.println("--- V2 = "+neuronioSaida.getV(2));
 		System.out.println("--- Y2 = "+neuronioSaida.getY(2));
+		System.out.println("--- V3 = "+neuronioSaida.getV(3));
+		System.out.println("--- Y3 = "+neuronioSaida.getY(3));
 		
-		neuronioSaida.calculaVsaida(4, 41, 1);
-		neuronioSaida.calculaVsaida(4, 42, 2);
-		neuronioSaida.calculaVsaida(4, 43, 3);
 		
+		neuronioSaida.calculaVsaida(4);
 		neuronioSaida.calculaY(4);
 		
 		System.out.println("--- V4 = "+neuronioSaida.getV(4));
 		System.out.println("--- Y4 = "+neuronioSaida.getY(4));
 		//neuronio.setW0(neuronio.getW0() + eta * erro);
+		
+		// calcula do erro
+		//erro = d[i] - y;
+		
+		erro = neuronioSaida.getD() - neuronioSaida.getY(4);
+		
+		if(erro != 0){
+			System.out.println("---- Erro: "+ erro);
+			neuronioSaida.calculaGSaida(4, erro);
+			System.out.println("---- G4: "+ neuronioSaida.getG(4));
+			
+			neuronioSaida.calculaDelta(4, eta);
+			neuronioSaida.ajusteDePesos(4);
+			
+			neuronioSaida.calculaDelta(1, eta);
+			neuronioSaida.calculaDelta(2, eta);
+			neuronioSaida.calculaDelta(3, eta);
+			
+			neuronioSaida.calculaGoculta(1);
+			neuronioSaida.calculaGoculta(2);
+			neuronioSaida.calculaGoculta(3);
+			
+			neuronioSaida.ajusteDePesos(1);
+			neuronioSaida.ajusteDePesos(2);
+			neuronioSaida.ajusteDePesos(3);
+			
+			
+		}
 		
 		
 	}
