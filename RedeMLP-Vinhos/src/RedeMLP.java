@@ -36,7 +36,7 @@ public class RedeMLP {
 		//quality
 		double  d[] = new double[2];
 		
-		
+		//testebranch
 		//treinamento
 		int epocas = 0, i;
 		double y, erro, erroGeral;
