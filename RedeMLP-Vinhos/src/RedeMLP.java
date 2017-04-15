@@ -46,13 +46,50 @@ public class RedeMLP {
 		//System.out.println("--- TREINAMENTO");
 		neuronioSaida.zeraV();
 		
+		// Pesos das entradas padroes //
 		neuronioSaida.setW(10, 1);
 		neuronioSaida.setW(20, 1);
 		neuronioSaida.setW(30, 1);
 		neuronioSaida.setW(40, 1);
+		// -- //
+		neuronioSaida.setW(11, 1);
+		neuronioSaida.setW(12, 2);
+		neuronioSaida.setW(13, 2);
+		neuronioSaida.setW(14, 3);
+		neuronioSaida.setW(15, 1);
+		neuronioSaida.setW(16, 2);
+		neuronioSaida.setW(17, 0);
+		neuronioSaida.setW(18, 1);
+		neuronioSaida.setW(19, 2);
+		neuronioSaida.setW(110, 3);
+		neuronioSaida.setW(111, 2);
+		
+		neuronioSaida.setW(21, 0);
+		neuronioSaida.setW(22, 1);
+		neuronioSaida.setW(23, 0);
+		neuronioSaida.setW(24, 2);
+		neuronioSaida.setW(25, 3);
+		neuronioSaida.setW(26, 1);
+		neuronioSaida.setW(27, 1);
+		neuronioSaida.setW(28, 2);
+		neuronioSaida.setW(29, 2);
+		neuronioSaida.setW(210, 0);
+		neuronioSaida.setW(211, 1);
+		
+		neuronioSaida.setW(31, 0);
+		neuronioSaida.setW(32, 1);
+		neuronioSaida.setW(33, 1);
+		neuronioSaida.setW(34, 2);
+		neuronioSaida.setW(35, 1);
+		neuronioSaida.setW(36, 1);
+		neuronioSaida.setW(37, 2);
+		neuronioSaida.setW(38, 1);
+		neuronioSaida.setW(39, 1);
+		neuronioSaida.setW(310, 0);
+		neuronioSaida.setW(311, 2);
+		
 		
 		// Entrada 1 //
-		/*
 		neuronioSaida.setX(0, 1);
 		neuronioSaida.setX(1, 0.465408805);
 		neuronioSaida.setX(2, 0.443037975);
@@ -66,8 +103,9 @@ public class RedeMLP {
 		neuronioSaida.setX(10, 0.280000000);
 		neuronioSaida.setX(11, 0.671428571);		
 		neuronioSaida.setD(0.625);
-		*/
-		// Emtrada 2 //
+
+		// Entrada 2 //
+		/*
 		neuronioSaida.setX(0, 1);
 		neuronioSaida.setX(1, 0.490566038);
 		neuronioSaida.setX(2, 0.556962025);
@@ -81,6 +119,7 @@ public class RedeMLP {
 		neuronioSaida.setX(10, 0.34);
 		neuronioSaida.setX(11, 0.7);		
 		neuronioSaida.setD(0.625);
+		*/
 		
 		//neuronio.setW0(neuronio.getW0() + eta * erro);
 		
@@ -111,6 +150,7 @@ public class RedeMLP {
 				neuronioSaida.calculaDelta(4, eta);
 				neuronioSaida.ajusteDePesos(4);
 				
+				neuronioSaida.calculaGoculta(0);
 				neuronioSaida.calculaGoculta(1);
 				neuronioSaida.calculaGoculta(2);
 				neuronioSaida.calculaGoculta(3);
@@ -137,6 +177,37 @@ public class RedeMLP {
 				
 				break;
 			}
+			
+			// Entrada 2 //
+			/*
+			neuronioSaida.setX(0, 1);
+			neuronioSaida.setX(1, 0.490566038);
+			neuronioSaida.setX(2, 0.556962025);
+			neuronioSaida.setX(3, 0);		
+			neuronioSaida.setX(4, 0.167741935);
+			neuronioSaida.setX(5, 0.098);
+			neuronioSaida.setX(6, 0.347222222);
+			neuronioSaida.setX(7, 0.117647059);
+			neuronioSaida.setX(8, 0.231833910);
+			neuronioSaida.setX(9, 0.8);
+			neuronioSaida.setX(10, 0.34);
+			neuronioSaida.setX(11, 0.7);		
+			neuronioSaida.setD(0.625);
+			
+			// Entrada 4 //
+			neuronioSaida.setX(0, 1);
+			neuronioSaida.setX(1, 0.7044025157);
+			neuronioSaida.setX(2, 0.1772151899);
+			neuronioSaida.setX(3, 0.56);		
+			neuronioSaida.setX(4, 0.1225806452);
+			neuronioSaida.setX(5, 0.075);
+			neuronioSaida.setX(6, 0.2361111111);
+			neuronioSaida.setX(7, 0.2076124567);
+			neuronioSaida.setX(8, 0.998);
+			neuronioSaida.setX(9, 0.79);
+			neuronioSaida.setX(10, 0.29);
+			neuronioSaida.setX(11, 0.7);		
+			neuronioSaida.setD(0.75);
 			
 			/*
 			System.out.println("--- V1 = "+neuronioSaida.getV(1));

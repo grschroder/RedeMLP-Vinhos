@@ -62,14 +62,28 @@ public class Neuronio {
 	
 	public void calculaGoculta(int neuNumber){
 		//DÚVIDA ABAIXO: PRA CALCULAR O GRADIENTE DA CAMADA OCULTA, A SOMATÓRIA INCLUI OS PESOS DE TODAS ENTRADAS DO NEURONIO A DIREITA?
-		this.g[neuNumber] = this.y[neuNumber] * (1 - this.y[neuNumber]) * (this.g[4] * this.w[40] + this.g[4] * this.w[41] + this.g[4] * this.w[42] + this.g[4] * this.w[43]);
-		
+		//this.g[neuNumber] = this.y[neuNumber] * (1 - this.y[neuNumber]) * (this.g[4] * this.w[40] + this.g[4] * this.w[41] + this.g[4] * this.w[42] + this.g[4] * this.w[43]);
 		//Tangente Hiperbolica
 		//this.g[neuNumber] = 1 - Math.tan(this.v[neuNumber]) * Math.tan(this.v[neuNumber]) * (this.g[4] * this.w[40] + this.g[4] * this.w[41] + this.g[4] * this.w[42] + this.g[4] * this.w[43]);
 		
+		if (neuNumber == 1){
+			this.g[neuNumber] = this.y[neuNumber] * (1 - this.y[neuNumber]) * (this.g[4] * this.w[41]);
+		}
+		
+		else if (neuNumber == 2){
+			this.g[neuNumber] = this.y[neuNumber] * (1 - this.y[neuNumber]) * (this.g[4] * this.w[42]);
+		}
+		
+		else if (neuNumber == 3){
+			this.g[neuNumber] = this.y[neuNumber] * (1 - this.y[neuNumber]) * (this.g[4] * this.w[43]);
+		}
+		
+		else if (neuNumber == 0){
+			this.g[neuNumber] = this.y[neuNumber] * (1 - this.y[neuNumber]) * (this.g[4] * this.w[40]);
+		}
+		
 		//System.out.println("G"+neuNumber+" = "+this.g[neuNumber]);
-		//this.g[neuNumber] = 
-	}
+		}
 	
 	public void calculaDelta(int neuNumber, double eta){
 		//delta = g * eta * y
@@ -225,7 +239,7 @@ public class Neuronio {
 		//Função de transferência
 		this.y[posV] = 1/1 + Math.exp(-1.7159*this.v[posV]);
 		//Tangente Hiperbolica
-		//this.y[posV] = 1.7259 * Math.tanh(2/3*this.v[posV]);
+		//this.y[posV] = Math.tanh(this.v[posV]);
 		//System.out.println("Y"+posV+" = "+this.y[posV]);
 	}
 	
