@@ -51,6 +51,7 @@ public class RedeMLP {
 		neuronioSaida.setW(30, 1);
 		neuronioSaida.setW(40, 1);
 		
+		
 		neuronioSaida.setX(0, 1);
 		neuronioSaida.setX(1, 0.465408805);
 		neuronioSaida.setX(2, 0.443037975);
@@ -70,7 +71,7 @@ public class RedeMLP {
 		// calcula do erro
 		//erro = d[i] - y;
 		int in = 0;
-		while(in<2){
+		while(true){
 			
 			neuronioSaida.calculaVoculta(1);
 			neuronioSaida.calculaVoculta(2);
@@ -85,8 +86,10 @@ public class RedeMLP {
 			neuronioSaida.calculaY(4);
 			
 			erro = neuronioSaida.getD() - neuronioSaida.getY(4);
+		
 			in++;
 			if(erro != 0){
+				//System.out.println("--------------------------");
 				System.out.println("---- Erro: "+ erro);
 				neuronioSaida.calculaGSaida(4, erro);
 				neuronioSaida.calculaDelta(4, eta);
