@@ -65,51 +65,40 @@ public class RedeMLP {
 		neuronioSaida.setX(11, 0.671428571);		
 		neuronioSaida.setD(0.625);
 		
-		neuronioSaida.calculaVoculta(1);
-		neuronioSaida.calculaVoculta(2);
-		neuronioSaida.calculaVoculta(3);
-		
-		neuronioSaida.calculaY(1);
-		neuronioSaida.calculaY(2);
-		neuronioSaida.calculaY(3);
-		
-		
-		System.out.println("--- V1 = "+neuronioSaida.getV(1));
-		System.out.println("--- Y1 = "+neuronioSaida.getY(1));
-		System.out.println("--- V2 = "+neuronioSaida.getV(2));
-		System.out.println("--- Y2 = "+neuronioSaida.getY(2));
-		System.out.println("--- V3 = "+neuronioSaida.getV(3));
-		System.out.println("--- Y3 = "+neuronioSaida.getY(3));
-		
-		
-		neuronioSaida.calculaVsaida(4);
-		neuronioSaida.calculaY(4);
-		
-		System.out.println("--- V4 = "+neuronioSaida.getV(4));
-		System.out.println("--- Y4 = "+neuronioSaida.getY(4));
 		//neuronio.setW0(neuronio.getW0() + eta * erro);
 		
 		// calcula do erro
 		//erro = d[i] - y;
-		
-		//while(true){
-			erro = neuronioSaida.getD() - neuronioSaida.getY(4);
+		int in = 0;
+		while(in<2){
 			
+			neuronioSaida.calculaVoculta(1);
+			neuronioSaida.calculaVoculta(2);
+			neuronioSaida.calculaVoculta(3);
+			
+			neuronioSaida.calculaY(1);
+			neuronioSaida.calculaY(2);
+			neuronioSaida.calculaY(3);
+			
+			
+			neuronioSaida.calculaVsaida(4);
+			neuronioSaida.calculaY(4);
+			
+			erro = neuronioSaida.getD() - neuronioSaida.getY(4);
+			in++;
 			if(erro != 0){
 				System.out.println("---- Erro: "+ erro);
 				neuronioSaida.calculaGSaida(4, erro);
-				System.out.println("---- G4: "+ neuronioSaida.getG(4));
-			
 				neuronioSaida.calculaDelta(4, eta);
 				neuronioSaida.ajusteDePesos(4);
-				
-				neuronioSaida.calculaDelta(1, eta);
-				neuronioSaida.calculaDelta(2, eta);
-				neuronioSaida.calculaDelta(3, eta);
 				
 				neuronioSaida.calculaGoculta(1);
 				neuronioSaida.calculaGoculta(2);
 				neuronioSaida.calculaGoculta(3);
+				
+				neuronioSaida.calculaDelta(1, eta);
+				neuronioSaida.calculaDelta(2, eta);
+				neuronioSaida.calculaDelta(3, eta);
 				
 				neuronioSaida.ajusteDePesos(1);
 				neuronioSaida.ajusteDePesos(2);
@@ -125,15 +114,23 @@ public class RedeMLP {
 				System.out.println("	W16	: 	"	+	neuronioSaida.getW(	16	))	;
 				System.out.println("	W17	: 	"	+	neuronioSaida.getW(	17	))	;
 				System.out.println("	W18	: 	"	+	neuronioSaida.getW(	18	))	;
-				System.out.println("	W19	: 	"	+	neuronioSaida.getW(	19	))	;
-
+				System.out.println("	W19	: 	"	+	neuronioSaida.getW(	19	))	;				
 				
-				
-				//break;
+				break;
 			}
 			
-		
-		//}
+			/*
+			System.out.println("--- V1 = "+neuronioSaida.getV(1));
+			System.out.println("--- Y1 = "+neuronioSaida.getY(1));
+			System.out.println("--- V2 = "+neuronioSaida.getV(2));
+			System.out.println("--- Y2 = "+neuronioSaida.getY(2));
+			System.out.println("--- V3 = "+neuronioSaida.getV(3));
+			System.out.println("--- Y3 = "+neuronioSaida.getY(3));
+			System.out.println("--- V4 = "+neuronioSaida.getV(4));
+			System.out.println("--- Y4 = "+neuronioSaida.getY(4));
+			*/
+			
+		}
 	}
 
 }
