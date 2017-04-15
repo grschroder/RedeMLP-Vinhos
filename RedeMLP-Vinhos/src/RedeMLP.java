@@ -40,7 +40,7 @@ public class RedeMLP {
 		//treinamento
 		int epocas = 0, i;
 		double y, erro, erroGeral;
-		double eta = 1d; 
+		double eta = 0.3; 
 		double entrada1=0;
 		
 		//System.out.println("--- TREINAMENTO");
@@ -51,7 +51,8 @@ public class RedeMLP {
 		neuronioSaida.setW(30, 1);
 		neuronioSaida.setW(40, 1);
 		
-		
+		// Entrada 1 //
+		/*
 		neuronioSaida.setX(0, 1);
 		neuronioSaida.setX(1, 0.465408805);
 		neuronioSaida.setX(2, 0.443037975);
@@ -64,6 +65,21 @@ public class RedeMLP {
 		neuronioSaida.setX(9, 0.877500000);
 		neuronioSaida.setX(10, 0.280000000);
 		neuronioSaida.setX(11, 0.671428571);		
+		neuronioSaida.setD(0.625);
+		*/
+		// Emtrada 2 //
+		neuronioSaida.setX(0, 1);
+		neuronioSaida.setX(1, 0.490566038);
+		neuronioSaida.setX(2, 0.556962025);
+		neuronioSaida.setX(3, 0);		
+		neuronioSaida.setX(4, 0.167741935);
+		neuronioSaida.setX(5, 0.098);
+		neuronioSaida.setX(6, 0.347222222);
+		neuronioSaida.setX(7, 0.117647059);
+		neuronioSaida.setX(8, 0.231833910);
+		neuronioSaida.setX(9, 0.8);
+		neuronioSaida.setX(10, 0.34);
+		neuronioSaida.setX(11, 0.7);		
 		neuronioSaida.setD(0.625);
 		
 		//neuronio.setW0(neuronio.getW0() + eta * erro);
