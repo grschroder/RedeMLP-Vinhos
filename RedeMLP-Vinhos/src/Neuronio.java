@@ -78,6 +78,7 @@ public class Neuronio {
 			this.g[neuNumber] = this.y[neuNumber] * (1 - this.y[neuNumber]) * (this.g[4] * this.w[43]);
 		}
 		
+		// rever esse
 		else if (neuNumber == 0){
 			this.g[neuNumber] = this.y[neuNumber] * (1 - this.y[neuNumber]) * (this.g[4] * this.w[40]);
 		}

@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 
 public class RedeMLP {
 
@@ -39,9 +41,13 @@ public class RedeMLP {
 		//testebranch
 		//treinamento
 		int epocas = 0, i;
-		double y, erro, erroGeral;
-		double eta = 0.3; 
+		double y;
+		double erro; 
+		double erroGeral;
+		double eta = 0.3d; 
 		double entrada1=0;
+		DecimalFormat erroFormat = new DecimalFormat("#.####");
+		
 		
 		//System.out.println("--- TREINAMENTO");
 		neuronioSaida.zeraV();
@@ -52,6 +58,7 @@ public class RedeMLP {
 		neuronioSaida.setW(30, 1);
 		neuronioSaida.setW(40, 1);
 		// -- //
+				
 		neuronioSaida.setW(11, 1);
 		neuronioSaida.setW(12, 2);
 		neuronioSaida.setW(13, 2);
@@ -121,10 +128,6 @@ public class RedeMLP {
 		neuronioSaida.setD(0.625);
 		*/
 		
-		//neuronio.setW0(neuronio.getW0() + eta * erro);
-		
-		// calcula do erro
-		//erro = d[i] - y;
 		int in = 0;
 		while(true){
 			
@@ -141,11 +144,13 @@ public class RedeMLP {
 			neuronioSaida.calculaY(4);
 			
 			erro = neuronioSaida.getD() - neuronioSaida.getY(4);
+			
 		
 			in++;
 			if(erro != 0){
 				//System.out.println("--------------------------");
 				System.out.println("---- Erro: "+ erro);
+				//System.out.println("---- ErroFormat: "+ erroFormat.format(erro));
 				neuronioSaida.calculaGSaida(4, erro);
 				neuronioSaida.calculaDelta(4, eta);
 				neuronioSaida.ajusteDePesos(4);
