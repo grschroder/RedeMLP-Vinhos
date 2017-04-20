@@ -129,7 +129,7 @@ public class RedeMLP {
 		*/
 		
 		int in = 0;
-		while(true){
+		while(in<1){
 			
 			neuronioSaida.calculaVoculta(1);
 			neuronioSaida.calculaVoculta(2);
@@ -155,7 +155,9 @@ public class RedeMLP {
 				neuronioSaida.calculaDelta(4, eta);
 				neuronioSaida.ajusteDePesos(4);
 				
+				// rever esse
 				neuronioSaida.calculaGoculta(0);
+				
 				neuronioSaida.calculaGoculta(1);
 				neuronioSaida.calculaGoculta(2);
 				neuronioSaida.calculaGoculta(3);
