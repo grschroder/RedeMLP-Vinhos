@@ -83,5 +83,11 @@ public class Vinhos {
 	public void setQuality(double quality) {
 		Quality = quality;
 	}
-	
+    @Override
+    public String toString(){
+    	return "fixed acidity " +FixedAcidity+ ",volatile acidity " +VolatileAcidity+ ",citric acid " +CitricAcid+ 
+        ",residual sugar " +ResidualSugar+ ",chlorides " +Chlorides+ ",free sulfur dioxide " +FreeSulfurDioxide+ 
+        ",total sulfur dioxide " +TotalSulfurDioxide+ ",density " +Density+ ",pH " +Ph+ ",sulphates " +Sulphates+
+        ",alcohol " +Alcohol+ ",quality " +Quality;
+    }
 }
