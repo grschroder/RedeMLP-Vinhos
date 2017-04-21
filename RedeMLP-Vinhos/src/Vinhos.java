@@ -14,6 +14,8 @@ public class Vinhos {
 	public double Density;
 	public double Ph;
 	public double Sulphates;
+	
+	
 	public double getPh() {
 		return Ph;
 	}

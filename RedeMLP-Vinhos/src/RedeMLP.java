@@ -1,5 +1,7 @@
 import java.io.*;
 import java.net.*;
+import java.util.ArrayList;
+
 
 public class RedeMLP {
 
@@ -133,7 +135,57 @@ public class RedeMLP {
     	//BufferedReader in = new BufferedReader(new InputStreamReader(teste.openStream()));
 		
 		int repeat = 0;
-		csv.importCSV();
+		//csv.importCSV();
+		
+		
+    	String csvFile = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/winequality-red.csv";
+        BufferedReader br = null;
+        String line = "";
+        String cvsSplitBy = ";";
+        
+        Vinhos vinho = new Vinhos();
+
+        try {
+
+            br = new BufferedReader(new FileReader(csvFile));
+            ArrayList lista = new ArrayList();
+            while ((line = br.readLine()) != null) {
+            	String[] linha = line.split(cvsSplitBy);
+            	
+            	vinho.setFixedAcidity(Double.parseDouble(linha[0]));
+            	vinho.setVolatileAcidity(Double.parseDouble(linha[1]));
+            	vinho.setCitricAcid(Double.parseDouble(linha[2]));
+            	vinho.setResidualSugar(Double.parseDouble(linha[3]));
+            	vinho.setChlorides(Double.parseDouble(linha[4]));
+            	vinho.setFreeSulfurDioxide(Double.parseDouble(linha[5]));
+            	vinho.setTotalSulfurDioxide(Double.parseDouble(linha[6]));
+            	vinho.setDensity(Double.parseDouble(linha[7]));
+            	vinho.setPh(Double.parseDouble(linha[8]));
+            	vinho.setSulphates(Double.parseDouble(linha[9]));
+            	vinho.setAlcohol(Double.parseDouble(linha[10]));
+            	vinho.setQuality(Double.parseDouble(linha[11]));
+            	lista.add(vinho);
+            	
+            }            
+            for(i=0; i < lista.size(); i++){
+            	System.out.println(lista.get(i));
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        
+		System.out.println("Alcool: "+vinho.getAlcohol());
+		
 		while(repeat<1){
 			
 			neuronioSaida.calculaVoculta(1);
