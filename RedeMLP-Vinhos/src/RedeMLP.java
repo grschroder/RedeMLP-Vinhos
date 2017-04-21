@@ -1,59 +1,11 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.ListIterator;
-
+import java.io.*;
+import java.net.*;
 
 public class RedeMLP {
 
 	public static void main(String[] args) {
-		String csvFile = "C:/Users/crist/Google Drive/Estudo/Faculdade/IA_II/RedeMLP-Vinhos/RedeMLP-Vinhos/Docs/winequality-red.csv";
-        BufferedReader br = null;
-        String line = "";
-        String cvsSplitBy = ";";
-
-        try {
-
-            br = new BufferedReader(new FileReader(csvFile));
-            ArrayList lista = new ArrayList();
-            while ((line = br.readLine()) != null) {
-            	String[] linha = line.split(cvsSplitBy);
-            	Vinhos vinho = new Vinhos();
-            	vinho.setFixedAcidity(Double.parseDouble(linha[0]));
-            	vinho.setVolatileAcidity(Double.parseDouble(linha[1]));
-            	vinho.setCitricAcid(Double.parseDouble(linha[2]));
-            	vinho.setResidualSugar(Double.parseDouble(linha[3]));
-            	vinho.setChlorides(Double.parseDouble(linha[4]));
-            	vinho.setFreeSulfurDioxide(Double.parseDouble(linha[5]));
-            	vinho.setTotalSulfurDioxide(Double.parseDouble(linha[6]));
-            	vinho.setDensity(Double.parseDouble(linha[7]));
-            	vinho.setPh(Double.parseDouble(linha[8]));
-            	vinho.setSulphates(Double.parseDouble(linha[9]));
-            	vinho.setAlcohol(Double.parseDouble(linha[10]));
-            	vinho.setQuality(Double.parseDouble(linha[11]));
-            	lista.add(vinho);
-            	
-            }            
-            for(int i=0; i < lista.size(); i++){
-            	System.out.println(lista.get(i));
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }    
-
+		
+		Vinhos csv = new Vinhos();
 		// Normalizar as entradas para estarem entre 0 e 1.
 		// entradas que devem ser normalizadas: fixed acidity, residual sugar, free sulfur dioxide, total sulfur dioxide, pH, sulphates, alcohol
 		//densidade vem bugada no excel e no libreoffice
@@ -61,7 +13,7 @@ public class RedeMLP {
 		
 		//na propagação, o v saí do neuronio, a partir dele é calculado o y através da função de ativação Q
 		
-		/*Neuronio neuronioSaida = new Neuronio();
+		Neuronio neuronioSaida = new Neuronio();
 		
 		//fixed acidity
 		double x1[] = new double[2];
@@ -96,7 +48,6 @@ public class RedeMLP {
 		double erroGeral;
 		double eta = 0.3d; 
 		double entrada1=0;
-		DecimalFormat erroFormat = new DecimalFormat("#.####");
 		
 		
 		//System.out.println("--- TREINAMENTO");
@@ -178,13 +129,12 @@ public class RedeMLP {
 		neuronioSaida.setD(0.625);
 		*/
 		
-//<<<<<<< HEAD
-		int in = 0;
-//		while(in<1){
-//=======
-/*		int in = 0;
-		while(true){
->>>>>>> c84c0e13e62036cfead89cf53e4eef78d889fbc0
+		//URL teste = new URL ("https://raw.githubusercontent.com/grschroder/RedeMLP-Vinhos/master/RedeMLP-Vinhos/Docs/winequality-red.csv");
+    	//BufferedReader in = new BufferedReader(new InputStreamReader(teste.openStream()));
+		
+		int repeat = 0;
+		csv.importCSV();
+		while(repeat<1){
 			
 			neuronioSaida.calculaVoculta(1);
 			neuronioSaida.calculaVoculta(2);
@@ -201,7 +151,7 @@ public class RedeMLP {
 			erro = neuronioSaida.getD() - neuronioSaida.getY(4);
 			
 		
-			in++;
+			repeat++;
 			if(erro != 0){
 				//System.out.println("--------------------------");
 				System.out.println("---- Erro: "+ erro);
@@ -282,7 +232,6 @@ public class RedeMLP {
 			System.out.println("--- Y4 = "+neuronioSaida.getY(4));
 			*/
 		
-//		}
+		}
 	}
-
 }
