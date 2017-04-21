@@ -142,33 +142,34 @@ public class RedeMLP {
         BufferedReader br = null;
         String line = "";
         String cvsSplitBy = ";";
-        
         Vinhos vinho = new Vinhos();
+        
 
         try {
 
             br = new BufferedReader(new FileReader(csvFile));
             ArrayList lista = new ArrayList();
+            int quantos=0;
             while ((line = br.readLine()) != null) {
-            	String[] linha = line.split(cvsSplitBy);
-            	
-            	vinho.setFixedAcidity(Double.parseDouble(linha[0]));
-            	vinho.setVolatileAcidity(Double.parseDouble(linha[1]));
+            	String[] linha = line.split(cvsSplitBy);            	
+            	vinho.setFixedAcidity(Double.parseDouble(linha[0])/15.9);
+            	vinho.setVolatileAcidity(Double.parseDouble(linha[1])/1.58);
             	vinho.setCitricAcid(Double.parseDouble(linha[2]));
-            	vinho.setResidualSugar(Double.parseDouble(linha[3]));
+            	vinho.setResidualSugar(Double.parseDouble(linha[3])/15.5);
             	vinho.setChlorides(Double.parseDouble(linha[4]));
-            	vinho.setFreeSulfurDioxide(Double.parseDouble(linha[5]));
-            	vinho.setTotalSulfurDioxide(Double.parseDouble(linha[6]));
+            	vinho.setFreeSulfurDioxide(Double.parseDouble(linha[5])/72);
+            	vinho.setTotalSulfurDioxide(Double.parseDouble(linha[6])/289);
             	vinho.setDensity(Double.parseDouble(linha[7]));
-            	vinho.setPh(Double.parseDouble(linha[8]));
-            	vinho.setSulphates(Double.parseDouble(linha[9]));
-            	vinho.setAlcohol(Double.parseDouble(linha[10]));
-            	vinho.setQuality(Double.parseDouble(linha[11]));
-            	lista.add(vinho);
-            	
-            }            
+            	vinho.setPh(Double.parseDouble(linha[8])/4);
+            	vinho.setSulphates(Double.parseDouble(linha[9])/2);
+            	vinho.setAlcohol(Double.parseDouble(linha[10])/14);
+            	vinho.setQuality(Double.parseDouble(linha[11])/8);
+            	quantos++;
+            	lista.add(vinho);            	
+            }
+            System.out.println("Quantos "+quantos);
             for(i=0; i < lista.size(); i++){
-            	System.out.println(lista.get(i));
+            	//System.out.println(lista.get(i));
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
