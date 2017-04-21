@@ -181,6 +181,7 @@ public class RedeMLP {
             		System.out.println("Sulphates: "+vinho.getSulphates());
             		System.out.println("Alcohol: "+vinho.getAlcohol());
             		System.out.println("Quality: "+vinho.getQuality());
+            		break;
             	}
             	
             }
