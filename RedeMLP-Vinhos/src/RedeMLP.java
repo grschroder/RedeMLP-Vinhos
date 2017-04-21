@@ -159,10 +159,10 @@ public class RedeMLP {
             	vinho.setChlorides(Double.parseDouble(linha[4]));
             	vinho.setFreeSulfurDioxide(Double.parseDouble(linha[5])/72);
             	vinho.setTotalSulfurDioxide(Double.parseDouble(linha[6])/289);
-            	vinho.setDensity(Double.parseDouble(linha[7]));
-            	vinho.setPh(Double.parseDouble(linha[8])/4);
+            	vinho.setDensity(Double.parseDouble(linha[7])/1.00369);
+            	vinho.setPh(Double.parseDouble(linha[8])/4.01);
             	vinho.setSulphates(Double.parseDouble(linha[9])/2);
-            	vinho.setAlcohol(Double.parseDouble(linha[10])/14);
+            	vinho.setAlcohol(Double.parseDouble(linha[10])/14.9);
             	vinho.setQuality(Double.parseDouble(linha[11])/8);
             	quantos++;
             	lista.add(vinho);
