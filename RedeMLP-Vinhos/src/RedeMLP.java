@@ -165,7 +165,24 @@ public class RedeMLP {
             	vinho.setAlcohol(Double.parseDouble(linha[10])/14);
             	vinho.setQuality(Double.parseDouble(linha[11])/8);
             	quantos++;
-            	lista.add(vinho);            	
+            	lista.add(vinho);
+            	
+            	if(vinho.getFixedAcidity() > 1 || vinho.getVolatileAcidity() > 1 || vinho.getCitricAcid() > 1 || vinho.getResidualSugar() > 1 || vinho.getChlorides() > 1 || vinho.getFreeSulfurDioxide() > 1 || vinho.getTotalSulfurDioxide() > 1 || vinho.getDensity() > 1 || vinho.getPh() > 1 || vinho.getSulphates() > 1 || vinho.getAlcohol() > 1 || vinho.getQuality() > 1){
+            		System.out.println("TEM ALGO ERRADO!!");
+            		System.out.println("FixedAcidity: "+vinho.getFixedAcidity());
+            		System.out.println("VolatileAcidity: "+vinho.getVolatileAcidity());
+            		System.out.println("CitricAcid: "+vinho.getCitricAcid());
+            		System.out.println("ResidualSugar: "+vinho.getResidualSugar());
+            		System.out.println("Chlorides: "+vinho.getChlorides());
+            		System.out.println("SulfurDioxide: "+vinho.getFreeSulfurDioxide());
+            		System.out.println("TotalSulfurDioxide: "+vinho.getTotalSulfurDioxide());
+            		System.out.println("Density: "+vinho.getDensity());
+            		System.out.println("Ph: "+vinho.getPh());
+            		System.out.println("Sulphates: "+vinho.getSulphates());
+            		System.out.println("Alcohol: "+vinho.getAlcohol());
+            		System.out.println("Quality: "+vinho.getQuality());
+            	}
+            	
             }
             System.out.println("Quantos "+quantos);
             for(i=0; i < lista.size(); i++){
