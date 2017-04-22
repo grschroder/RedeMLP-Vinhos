@@ -97,55 +97,6 @@ public class Vinho {
         ",total sulfur dioxide " +TotalSulfurDioxide+ ",density " +Density+ ",pH " +Ph+ ",sulphates " +Sulphates+
         ",alcohol " +Alcohol+ ",quality " +Quality;
     }
-    
-    public void importCSV(){
-    	String csvFile = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/winequality-red.csv";
-        BufferedReader br = null;
-        String line = "";
-        String cvsSplitBy = ";";
-        
-
-        try {
-
-            br = new BufferedReader(new FileReader(csvFile));
-            ArrayList lista = new ArrayList();
-            Boolean primeiraVez = false;
-            while ((line = br.readLine()) != null) {
-            	if(!primeiraVez){
-            		primeiraVez = true;            		
-            	}else{
-            		String[] linha = line.split(cvsSplitBy);
-            		Vinho vinho = new Vinho();
-            		vinho.setFixedAcidity(Double.parseDouble(linha[0]));
-            		vinho.setVolatileAcidity(Double.parseDouble(linha[1]));
-            		vinho.setCitricAcid(Double.parseDouble(linha[2]));
-            		vinho.setResidualSugar(Double.parseDouble(linha[3]));
-            		vinho.setChlorides(Double.parseDouble(linha[4]));
-            		vinho.setFreeSulfurDioxide(Double.parseDouble(linha[5]));
-            		vinho.setTotalSulfurDioxide(Double.parseDouble(linha[6]));
-            		vinho.setDensity(Double.parseDouble(linha[7]));
-            		vinho.setPh(Double.parseDouble(linha[8]));
-            		vinho.setSulphates(Double.parseDouble(linha[9]));
-            		vinho.setAlcohol(Double.parseDouble(linha[10]));
-            		vinho.setQuality(Double.parseDouble(linha[11]));
-            		lista.add(vinho);            	
-            	}
-            }
-            for(int i=0; i < lista.size(); i++){
-            	System.out.println(lista.get(i));
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }    	
-    }
 }
+    
+    
