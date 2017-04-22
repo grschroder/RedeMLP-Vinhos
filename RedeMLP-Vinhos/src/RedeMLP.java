@@ -8,7 +8,8 @@ public class RedeMLP {
 	public static void main(String[] args) throws IOException {
 		String terminolinha = "";
 		String terminocampo = ";";		
-		String arquivo = "C:/Users/crist/Google Drive/Estudo/Faculdade/IA_II/RedeMLP-Vinhos/RedeMLP-Vinhos/src/winequality-red.csv";
+		//String arquivo = "C:/Users/crist/Google Drive/Estudo/Faculdade/IA_II/RedeMLP-Vinhos/RedeMLP-Vinhos/src/winequality-red.csv";
+		String arquivo = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/winequality-red.csv";
 		//Chama a classe para importar os vinhos e adicionar na lista de objetos
 		ArrayList<Vinho> vinhos;		
 		ImportData csv = new ImportData();
@@ -26,9 +27,6 @@ public class RedeMLP {
 		
 		Neuronio neuronioSaida = new Neuronio();
 		int repeat = 1;
-				
-	
-
 		int epocas = 0, i;
 		double y;
 		double erro; 
