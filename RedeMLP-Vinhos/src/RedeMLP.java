@@ -7,12 +7,12 @@ public class RedeMLP {
 
 	public static void main(String[] args) throws IOException {
 		String terminolinha = "";
-		String terminocampo = ";";
-		String arquivo = "caminho"; 
-		
+		String terminocampo = ";";		
+		String arquivo = "...";
 		//Chama a classe para importar os vinhos e adicionar na lista de objetos
 		ArrayList<Vinho> vinhos;		
 		ImportData csv = new ImportData();
+		
 		vinhos = csv.ImportData(terminocampo,terminolinha,arquivo);
 		/* Se quiser printar os objetos na tela, basta descomentar as 3 linhas abaixo
 		for(int i=0; i < vinhos.size(); i++){
