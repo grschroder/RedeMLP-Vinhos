@@ -35,7 +35,7 @@ public class ImportData {
 	            		vinho.setAlcohol(Double.parseDouble(linha[10])/14.9);
 	            		vinho.setQuality(Double.parseDouble(linha[11])/8);
 	            		lista.add(vinho);     
-	            	}	            		            	
+	            	}
 	            }
 			return lista;
 		} finally{

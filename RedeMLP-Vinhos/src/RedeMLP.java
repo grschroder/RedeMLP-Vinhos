@@ -13,6 +13,7 @@ public class RedeMLP {
 		String terminocampo = ";";		
 		//String arquivo = "C:/Users/crist/Google Drive/Estudo/Faculdade/IA_II/RedeMLP-Vinhos/RedeMLP-Vinhos/src/winequality-red.csv";
 		String arquivo = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/winequality-red.csv";
+		//String arquivo = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/winequality-white.csv";
 		//Chama a classe para importar os vinhos e adicionar na lista de objetos
 		ArrayList<Vinho> vinhos;		
 		ImportData csv = new ImportData();
@@ -61,7 +62,25 @@ public class RedeMLP {
 			neuronioSaida.setX(8, vinhos.get(repeat).Ph);
 			neuronioSaida.setX(10, vinhos.get(repeat).Sulphates);
 			neuronioSaida.setX(11, vinhos.get(repeat).Alcohol);
-			neuronioSaida.setD(vinhos.get(repeat).Quality);		
+			neuronioSaida.setD(vinhos.get(repeat).Quality);	
+			
+			if(vinhos.get(repeat).FixedAcidity > 1 || vinhos.get(repeat).VolatileAcidity > 1 || vinhos.get(repeat).CitricAcid > 1 || vinhos.get(repeat).ResidualSugar > 1 || vinhos.get(repeat).Chlorides > 1 || vinhos.get(repeat).FreeSulfurDioxide > 1 || vinhos.get(repeat).TotalSulfurDioxide > 1 || vinhos.get(repeat).Density > 1 || vinhos.get(repeat).Ph > 1 || vinhos.get(repeat).Sulphates > 1 || vinhos.get(repeat).Alcohol > 1 || vinhos.get(repeat).Quality > 1){
+        		System.out.println("TEM ALGO ERRADO!!");
+        		System.out.println("FixedAcidity: "+vinhos.get(repeat).FixedAcidity);
+        		System.out.println("VolatileAcidity: "+vinhos.get(repeat).VolatileAcidity);
+        		System.out.println("CitricAcid: "+vinhos.get(repeat).CitricAcid);
+        		System.out.println("ResidualSugar: "+vinhos.get(repeat).ResidualSugar);
+        		System.out.println("Chlorides: "+vinhos.get(repeat).Chlorides);
+        		System.out.println("SulfurDioxide: "+vinhos.get(repeat).FreeSulfurDioxide);
+        		System.out.println("TotalSulfurDioxide: "+vinhos.get(repeat).TotalSulfurDioxide);
+        		System.out.println("Density: "+vinhos.get(repeat).Density);
+        		System.out.println("Ph: "+vinhos.get(repeat).Ph);
+        		System.out.println("Sulphates: "+vinhos.get(repeat).Sulphates);
+        		System.out.println("Alcohol: "+vinhos.get(repeat).Alcohol);
+        		System.out.println("Quality: "+vinhos.get(repeat).Quality);
+        		break;
+        	}
+        	
 
 			
 			neuronioSaida.calculaVoculta(1);
@@ -121,8 +140,22 @@ public class RedeMLP {
 				System.out.println("	W110	: 	"	+	neuronioSaida.getW(	110	))	;	
 				System.out.println("	W111	: 	"	+	neuronioSaida.getW(	111	))	;	
 				
+				
+				jsonArray.add(neuronioSaida.getW(10));
 				jsonArray.add(neuronioSaida.getW(11));
+				jsonArray.add(neuronioSaida.getW(12));
+				jsonArray.add(neuronioSaida.getW(13));
+				jsonArray.add(neuronioSaida.getW(14));
+				jsonArray.add(neuronioSaida.getW(15));
+				jsonArray.add(neuronioSaida.getW(16));
+				jsonArray.add(neuronioSaida.getW(17));
+				jsonArray.add(neuronioSaida.getW(18));
+				jsonArray.add(neuronioSaida.getW(19));
+				jsonArray.add(neuronioSaida.getW(110));
+				jsonArray.add(neuronioSaida.getW(111));
 				jsonObject.put("Weights", jsonArray);
+				
+				
 				FileWriter fileWriter = new FileWriter("E:/GitHubRepository/RedeMLP-Vinhos/Docs/sample.json");
 				fileWriter.write(jsonObject.toJSONString());
 	            fileWriter.close();
