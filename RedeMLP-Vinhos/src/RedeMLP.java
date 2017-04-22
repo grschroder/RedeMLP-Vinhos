@@ -27,6 +27,8 @@ public class RedeMLP {
 		
 		//na propaga��o, o v sa� do neuronio, a partir dele � calculado o y atrav�s da fun��o de ativa��o Q
 		
+		JSONObject jsonObject = new JSONObject();
+		JSONArray jsonArray = new JSONArray();
 		
 		Neuronio neuronioSaida = new Neuronio();
 		int repeat = 1;
@@ -45,7 +47,8 @@ public class RedeMLP {
 		neuronioSaida.setW(20, 1);
 		neuronioSaida.setW(30, 1);
 		neuronioSaida.setW(40, 1);
-		// -- //				            			
+		// -- //				      
+		
 		while(true){
 			neuronioSaida.setX(1, vinhos.get(repeat).FixedAcidity);
 			neuronioSaida.setX(2, vinhos.get(repeat).VolatileAcidity);
@@ -118,7 +121,13 @@ public class RedeMLP {
 				System.out.println("	W110	: 	"	+	neuronioSaida.getW(	110	))	;	
 				System.out.println("	W111	: 	"	+	neuronioSaida.getW(	111	))	;	
 				
-				//break;
+				jsonArray.add(neuronioSaida.getW(11));
+				jsonObject.put("Weights", jsonArray);
+				FileWriter fileWriter = new FileWriter("E:/GitHubRepository/RedeMLP-Vinhos/Docs/sample.json");
+				fileWriter.write(jsonObject.toJSONString());
+	            fileWriter.close();
+				
+				break;
 			}
 		}
 	}
