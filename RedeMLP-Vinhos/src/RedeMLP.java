@@ -1,3 +1,6 @@
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
@@ -115,7 +118,7 @@ public class RedeMLP {
 				System.out.println("	W110	: 	"	+	neuronioSaida.getW(	110	))	;	
 				System.out.println("	W111	: 	"	+	neuronioSaida.getW(	111	))	;	
 				
-				break;
+				//break;
 			}
 		}
 	}
