@@ -175,7 +175,8 @@ public class RedeMLP {
 				System.out.println("Erro medio quadrado E: "+erroMedio);
 				epocas++;
 				System.out.println("Epocas: "+epocas);
-				System.out.println("Quantidade que deu certo: "+qtdCertos);				
+				System.out.println("Quantidade que deu certo: "+qtdCertos);	
+				
 				if (erroMedio < 100){
 					break;
 				}
