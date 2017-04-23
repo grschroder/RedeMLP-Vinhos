@@ -34,15 +34,18 @@ public class RedeMLP {
 		Neuronio neuronioSaida = new Neuronio();
 		int repeat = 0;
 		int epocas = 0, i;
-		double y;
-		double erro; 
+		double y; 
 		double erroGeral;
-		double eta = 0.3d; 
+		double eta = 1.0d; 
 		int entradasTreinamento;
+		double erroMedio=0;
+		int qtdCertos=0;
+		double erro[] = new double[vinhos.size()];
 		
+		//Treinamento com 80% das entradas
 		entradasTreinamento = (vinhos.size()*80)/100;
 		System.out.println("Entradas treinamento "+entradasTreinamento);
-		//System.out.println("--- TREINAMENTO");
+		
 		neuronioSaida.zeraV();
 		
 		// Pesos das entradas padroes //
@@ -67,7 +70,7 @@ public class RedeMLP {
 			neuronioSaida.setX(11, vinhos.get(repeat).Alcohol);
 			neuronioSaida.setD(vinhos.get(repeat).Quality);	
 			
-			
+			//Verifica se todas as entradas são menor que 1
 			if(vinhos.get(repeat).FixedAcidity > 1 || vinhos.get(repeat).VolatileAcidity > 1 || vinhos.get(repeat).CitricAcid > 1 || vinhos.get(repeat).ResidualSugar > 1 || vinhos.get(repeat).Chlorides > 1 || vinhos.get(repeat).FreeSulfurDioxide > 1 || vinhos.get(repeat).TotalSulfurDioxide > 1 || vinhos.get(repeat).Density > 1 || vinhos.get(repeat).Ph > 1 || vinhos.get(repeat).Sulphates > 1 || vinhos.get(repeat).Alcohol > 1 || vinhos.get(repeat).Quality > 1){
         		System.out.println("TEM ALGO ERRADO!!");
         		System.out.println("FixedAcidity: "+vinhos.get(repeat).FixedAcidity);
@@ -96,14 +99,13 @@ public class RedeMLP {
 			neuronioSaida.calculaVsaida(4);
 			neuronioSaida.calculaY(4);
 			
-			erro = neuronioSaida.getD() - neuronioSaida.getY(4);
+			erro[repeat] = neuronioSaida.getD() - neuronioSaida.getY(4);
 			
-			System.out.println("repeat: "+repeat);
-			if(erro != 0){
+			if(erro[repeat] != 0){
 				//System.out.println("--------------------------");
-				System.out.println("---- Erro: "+ erro);
+				//System.out.println("---- Erro: "+ erro);
 				//System.out.println("---- ErroFormat: "+ erroFormat.format(erro));
-				neuronioSaida.calculaGSaida(4, erro);
+				neuronioSaida.calculaGSaida(4, erro[repeat]);
 				neuronioSaida.calculaDelta(4, eta);
 				neuronioSaida.ajusteDePesos(4);
 				
@@ -122,9 +124,10 @@ public class RedeMLP {
 				neuronioSaida.ajusteDePesos(2);
 				neuronioSaida.ajusteDePesos(3);
 			}
-			else if (erro == 0){
-				System.out.println("Vezes: "+repeat);
-				System.out.println("	W10	: 	"	+	neuronioSaida.getW(10));
+			else if (erro[repeat] == 0){
+				qtdCertos++;
+				
+				/*System.out.println("	W10	: 	"	+	neuronioSaida.getW(10));
 				System.out.println("	W11	: 	"	+	neuronioSaida.getW(	11	))	;
 				System.out.println("	W12	: 	"	+	neuronioSaida.getW(	12	))	;
 				System.out.println("	W13	: 	"	+	neuronioSaida.getW(	13	))	;
@@ -154,15 +157,35 @@ public class RedeMLP {
 				FileWriter fileWriter = new FileWriter("E:/GitHubRepository/RedeMLP-Vinhos/Docs/sample.json");
 				fileWriter.write(jsonObject.toJSONString());
 	            fileWriter.close();
-				//break;
+				//break;*/
 			}
-			else if (entradasTreinamento == repeat){
+			//Final da Época
+			if (entradasTreinamento == repeat){
+				for (int iterator=0; iterator < entradasTreinamento ; iterator++){
+					if (iterator == 0){
+						erroMedio = erro[iterator];
+						erro[iterator]=0;
+					}
+					else{
+						erroMedio = erroMedio + erro[iterator];
+						erro[iterator]=0;
+					}
+				}
+				erroMedio = Math.pow(erroMedio, 2)/entradasTreinamento;
+				System.out.println("Erro medio quadrado E: "+erroMedio);
 				epocas++;
 				System.out.println("Epocas: "+epocas);
+				System.out.println("Quantidade que deu certo: "+qtdCertos);				
+				if (erroMedio < 100){
+					break;
+				}
 				repeat=0;
+				erroMedio=0;
+				qtdCertos=0;
+				//break;
 			}
-			System.out.println("Entradas treinamento "+entradasTreinamento);
-			System.out.println("Repeat "+repeat);
+			//System.out.println("Entradas treinamento "+entradasTreinamento);
+			//System.out.println("Repeat "+repeat);
 			
 			repeat++;
 		}
