@@ -32,15 +32,16 @@ public class RedeMLP {
 		JSONArray jsonArray = new JSONArray();
 		
 		Neuronio neuronioSaida = new Neuronio();
-		int repeat = 1;
+		int repeat = 0;
 		int epocas = 0, i;
 		double y;
 		double erro; 
 		double erroGeral;
 		double eta = 0.3d; 
-		int totalEntradas;
+		int entradasTreinamento;
 		
-		totalEntradas = vinhos.size();
+		entradasTreinamento = (vinhos.size()*80)/100;
+		System.out.println("Entradas treinamento "+entradasTreinamento);
 		//System.out.println("--- TREINAMENTO");
 		neuronioSaida.zeraV();
 		
@@ -51,7 +52,7 @@ public class RedeMLP {
 		neuronioSaida.setW(40, 1);
 		// -- //				      
 		
-		while(repeat<1){
+		while(true){
 
 			neuronioSaida.setX(1, vinhos.get(repeat).FixedAcidity);
 			neuronioSaida.setX(2, vinhos.get(repeat).VolatileAcidity);
@@ -96,8 +97,8 @@ public class RedeMLP {
 			neuronioSaida.calculaY(4);
 			
 			erro = neuronioSaida.getD() - neuronioSaida.getY(4);
-		
-			repeat++;
+			
+			System.out.println("repeat: "+repeat);
 			if(erro != 0){
 				//System.out.println("--------------------------");
 				System.out.println("---- Erro: "+ erro);
@@ -122,7 +123,6 @@ public class RedeMLP {
 				neuronioSaida.ajusteDePesos(3);
 			}
 			else if (erro == 0){
-
 				System.out.println("Vezes: "+repeat);
 				System.out.println("	W10	: 	"	+	neuronioSaida.getW(10));
 				System.out.println("	W11	: 	"	+	neuronioSaida.getW(	11	))	;
@@ -151,13 +151,20 @@ public class RedeMLP {
 				jsonArray.add(neuronioSaida.getW(111));
 				jsonObject.put("Weights", jsonArray);
 				
-				
 				FileWriter fileWriter = new FileWriter("E:/GitHubRepository/RedeMLP-Vinhos/Docs/sample.json");
 				fileWriter.write(jsonObject.toJSONString());
 	            fileWriter.close();
-				
-				break;
+				//break;
 			}
+			else if (entradasTreinamento == repeat){
+				epocas++;
+				System.out.println("Epocas: "+epocas);
+				repeat=0;
+			}
+			System.out.println("Entradas treinamento "+entradasTreinamento);
+			System.out.println("Repeat "+repeat);
+			
+			repeat++;
 		}
 	}
 }
