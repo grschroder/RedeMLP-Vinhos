@@ -38,8 +38,9 @@ public class RedeMLP {
 		double erro; 
 		double erroGeral;
 		double eta = 0.3d; 
+		int totalEntradas;
 		
-		
+		totalEntradas = vinhos.size();
 		//System.out.println("--- TREINAMENTO");
 		neuronioSaida.zeraV();
 		
@@ -50,7 +51,8 @@ public class RedeMLP {
 		neuronioSaida.setW(40, 1);
 		// -- //				      
 		
-		while(true){
+		while(repeat<1){
+
 			neuronioSaida.setX(1, vinhos.get(repeat).FixedAcidity);
 			neuronioSaida.setX(2, vinhos.get(repeat).VolatileAcidity);
 			neuronioSaida.setX(4, vinhos.get(repeat).CitricAcid);
@@ -63,6 +65,7 @@ public class RedeMLP {
 			neuronioSaida.setX(10, vinhos.get(repeat).Sulphates);
 			neuronioSaida.setX(11, vinhos.get(repeat).Alcohol);
 			neuronioSaida.setD(vinhos.get(repeat).Quality);	
+			
 			
 			if(vinhos.get(repeat).FixedAcidity > 1 || vinhos.get(repeat).VolatileAcidity > 1 || vinhos.get(repeat).CitricAcid > 1 || vinhos.get(repeat).ResidualSugar > 1 || vinhos.get(repeat).Chlorides > 1 || vinhos.get(repeat).FreeSulfurDioxide > 1 || vinhos.get(repeat).TotalSulfurDioxide > 1 || vinhos.get(repeat).Density > 1 || vinhos.get(repeat).Ph > 1 || vinhos.get(repeat).Sulphates > 1 || vinhos.get(repeat).Alcohol > 1 || vinhos.get(repeat).Quality > 1){
         		System.out.println("TEM ALGO ERRADO!!");
@@ -81,8 +84,6 @@ public class RedeMLP {
         		break;
         	}
         	
-
-			
 			neuronioSaida.calculaVoculta(1);
 			neuronioSaida.calculaVoculta(2);
 			neuronioSaida.calculaVoculta(3);
@@ -91,12 +92,10 @@ public class RedeMLP {
 			neuronioSaida.calculaY(2);
 			neuronioSaida.calculaY(3);
 			
-			
 			neuronioSaida.calculaVsaida(4);
 			neuronioSaida.calculaY(4);
 			
 			erro = neuronioSaida.getD() - neuronioSaida.getY(4);
-			
 		
 			repeat++;
 			if(erro != 0){
@@ -125,8 +124,6 @@ public class RedeMLP {
 			else if (erro == 0){
 
 				System.out.println("Vezes: "+repeat);
-				
-
 				System.out.println("	W10	: 	"	+	neuronioSaida.getW(10));
 				System.out.println("	W11	: 	"	+	neuronioSaida.getW(	11	))	;
 				System.out.println("	W12	: 	"	+	neuronioSaida.getW(	12	))	;
@@ -139,7 +136,6 @@ public class RedeMLP {
 				System.out.println("	W19	: 	"	+	neuronioSaida.getW(	19	))	;				
 				System.out.println("	W110	: 	"	+	neuronioSaida.getW(	110	))	;	
 				System.out.println("	W111	: 	"	+	neuronioSaida.getW(	111	))	;	
-				
 				
 				jsonArray.add(neuronioSaida.getW(10));
 				jsonArray.add(neuronioSaida.getW(11));

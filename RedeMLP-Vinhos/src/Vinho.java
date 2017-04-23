@@ -15,7 +15,6 @@ public class Vinho {
 	public double Ph;
 	public double Sulphates;
 	
-	
 	public double getPh() {
 		return Ph;
 	}
