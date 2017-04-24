@@ -87,7 +87,7 @@ public class RedeMLP {
         		System.out.println("Quality: "+vinhos.get(repeat).Quality);
         		break;
         	}
-        	
+			
 			neuronioSaida.calculaVoculta(1);
 			neuronioSaida.calculaVoculta(2);
 			neuronioSaida.calculaVoculta(3);
@@ -172,7 +172,7 @@ public class RedeMLP {
 					}
 				}
 				erroMedio = Math.pow(erroMedio, 2)/entradasTreinamento;
-				System.out.println("Erro medio quadrado E: "+erroMedio);
+				System.out.println("Erro medio quadrado: "+erroMedio);
 				epocas++;
 				System.out.println("Epocas: "+epocas);
 				System.out.println("Quantidade que deu certo: "+qtdCertos);	
