@@ -177,7 +177,8 @@ public class RedeMLP {
 				System.out.println("Epocas: "+epocas);
 				System.out.println("Quantidade que deu certo: "+qtdCertos);	
 				
-				if (erroMedio < 100){
+				if (erroMedio < 109){
+					neuronioSaida.printPesos();
 					break;
 				}
 				repeat=0;

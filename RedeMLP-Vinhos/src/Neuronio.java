@@ -1,3 +1,4 @@
+import java.io.*;
 
 public class Neuronio {
 	
@@ -244,7 +245,10 @@ public class Neuronio {
 		//System.out.println("Y"+posV+" = "+this.y[posV]);
 	}
 	
-	public void printPesos(){
+	public void printPesos() throws IOException {
+		FileWriter fileWriter = new FileWriter("E:/GitHubRepository/RedeMLP-Vinhos/Docs/teste.csv");
+		fileWriter.write("W10="+this.w[10]+";W11="+this.w[11]+"");
+		fileWriter.close();
 	}
 	
 }
