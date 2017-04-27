@@ -1,6 +1,4 @@
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-
+import org.json.*;
 import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
@@ -30,6 +28,9 @@ public class RedeMLP {
 		
 		JSONObject jsonObject = new JSONObject();
 		JSONArray jsonArray = new JSONArray();
+		
+		
+		
 		
 		Neuronio neuronioSaida = new Neuronio();
 		int repeat = 0;
