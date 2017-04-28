@@ -53,10 +53,10 @@ public class Neuronio {
 		//Q’ (Vk) = Q(Vk) * (1 – Q(Vk) <- derivada da função de transferencia
 		//1/1 + exp(-a*Vk) * (1 - (1/1 + exp(-a*Vk)))
 		//y * (1 - y) * erro
-		//this.g[neuNumber] = this.y[neuNumber] * (1 - this.y[neuNumber]) * erro;
+		this.g[neuNumber] = this.y[neuNumber] * (1 - this.y[neuNumber]) * erro;
 		
 		//Tangente Hiperbolica
-		this.g[neuNumber] = 1 - (Math.tanh(this.v[neuNumber]) * Math.tanh(this.v[neuNumber])) * erro;
+		//this.g[neuNumber] = 1 - (Math.tanh(this.v[neuNumber]) * Math.tanh(this.v[neuNumber])) * erro;
 		
 		//System.out.println("G4 = "+this.g[neuNumber]);
 	}
@@ -240,9 +240,9 @@ public class Neuronio {
 	
 	public void calculaY(int posV){
 		//Função de transferência
-		//this.y[posV] = 1/1 + Math.exp(-1.7159*this.v[posV]);
+		this.y[posV] = 1/1 + Math.exp(-1.7159*this.v[posV]);
 		//Tangente Hiperbolica
-		this.y[posV] = Math.tanh(this.v[posV]);
+		//this.y[posV] = Math.tanh(this.v[posV]);
 		//System.out.println("Y"+posV+" = "+this.y[posV]);
 	}
 	

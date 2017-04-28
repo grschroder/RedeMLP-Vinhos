@@ -10,8 +10,8 @@ public class RedeMLP {
 		String terminolinha = "";
 		String terminocampo = ";";		
 		//String arquivo = "C:/Users/crist/Google Drive/Estudo/Faculdade/IA_II/RedeMLP-Vinhos/RedeMLP-Vinhos/src/winequality-red.csv";
-		String arquivo = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/winequality-red.csv";
-		//String arquivo = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/winequality-white.csv";
+		//String arquivo = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/winequality-red.csv";
+		String arquivo = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/winequality-white.csv";
 		//Chama a classe para importar os vinhos e adicionar na lista de objetos
 		ArrayList<Vinho> vinhos;		
 		ImportData csv = new ImportData();
@@ -179,7 +179,7 @@ public class RedeMLP {
 				//if tangente hiperbolica
 				//if (erroMedio < 1246 || qtdCertos >= 12){// || epocas == 2){
 				//if formula da logistica
-				if (erroMedio < 108 || qtdCertos >= 15){// || epocas == 2){
+				if (erroMedio < 108 || qtdCertos >= 15 || epocas == 1){
 					neuronioSaida.printPesos();
 					break;
 				}
