@@ -26,8 +26,8 @@ public class RedeMLP {
 		
 		//na propaga��o, o v sa� do neuronio, a partir dele � calculado o y atrav�s da fun��o de ativa��o Q
 		
-		JSONObject jsonObject = new JSONObject();
-		JSONArray jsonArray = new JSONArray();
+		//JSONObject jsonObject = new JSONObject();
+		//JSONArray jsonArray = new JSONArray();
 		
 		
 		
@@ -37,7 +37,7 @@ public class RedeMLP {
 		int epocas = 0, i;
 		double y; 
 		double erroGeral;
-		double eta = 1.0d; 
+		double eta = 0.9d; 
 		int entradasTreinamento;
 		double erroMedio=0;
 		int qtdCertos=0;
@@ -58,6 +58,7 @@ public class RedeMLP {
 		
 		while(true){
 
+			neuronioSaida.setX(0, 0);
 			neuronioSaida.setX(1, vinhos.get(repeat).FixedAcidity);
 			neuronioSaida.setX(2, vinhos.get(repeat).VolatileAcidity);
 			neuronioSaida.setX(4, vinhos.get(repeat).CitricAcid);
@@ -109,9 +110,6 @@ public class RedeMLP {
 				neuronioSaida.calculaGSaida(4, erro[repeat]);
 				neuronioSaida.calculaDelta(4, eta);
 				neuronioSaida.ajusteDePesos(4);
-				
-				// rever esse
-				neuronioSaida.calculaGoculta(0);
 				
 				neuronioSaida.calculaGoculta(1);
 				neuronioSaida.calculaGoculta(2);
@@ -178,7 +176,10 @@ public class RedeMLP {
 				System.out.println("Epocas: "+epocas);
 				System.out.println("Quantidade que deu certo: "+qtdCertos);	
 				
-				if (erroMedio < 109){
+				//if tangente hiperbolica
+				//if (erroMedio < 1246 || qtdCertos >= 12){// || epocas == 2){
+				//if formula da logistica
+				if (erroMedio < 108 || qtdCertos >= 15){// || epocas == 2){
 					neuronioSaida.printPesos();
 					break;
 				}
