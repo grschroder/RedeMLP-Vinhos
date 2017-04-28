@@ -8,44 +8,42 @@ public class RedeMLP {
 
 	public static void main(String[] args) throws IOException {
 		String terminolinha = "";
-		String terminocampo = ";";		
-		//String arquivo = "C:/Users/crist/Google Drive/Estudo/Faculdade/IA_II/RedeMLP-Vinhos/RedeMLP-Vinhos/src/winequality-red.csv";
-		String arquivo = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/winequality-red.csv";
+		String terminocampo = ";";
+		//String arquivo = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/winequality-red.csv";
 		//String arquivo = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/winequality-white.csv";
+		String arquivo = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/quality-allwines.csv"; 
 		//Chama a classe para importar os vinhos e adicionar na lista de objetos
-		ArrayList<Vinho> vinhos;		
+		ArrayList<Vinho> vinhos;	
 		ImportData csv = new ImportData();
 		
 		vinhos = csv.ImportData(terminocampo,terminolinha,arquivo);
-		// Se quiser printar os objetos na tela, basta descomentar as 3 linhas abaixo		
+		
+		String weightFile = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/Red-Weights.csv";
+		csv.ImportWeights(terminocampo, terminolinha, weightFile);
         
-				// Normalizar as entradas para estarem entre 0 e 1.
+		// Normalizar as entradas para estarem entre 0 e 1.
 		// entradas que devem ser normalizadas: fixed acidity, residual sugar, free sulfur dioxide, total sulfur dioxide, pH, sulphates, alcohol
 		//densidade vem bugada no excel e no libreoffice
 		// a sa�da do programa � a quality
 		
 		//na propaga��o, o v sa� do neuronio, a partir dele � calculado o y atrav�s da fun��o de ativa��o Q
 		
-		//JSONObject jsonObject = new JSONObject();
-		//JSONArray jsonArray = new JSONArray();
-		
-		
-		
-		
 		Neuronio neuronioSaida = new Neuronio();
 		int repeat = 0;
 		int epocas = 0, i;
 		double y; 
 		double erroGeral;
-		double eta = 0.9d; 
+		double eta = 0.5d; 
 		int entradasTreinamento;
 		double erroMedio=0;
 		int qtdCertos=0;
 		double erro[] = new double[vinhos.size()];
 		
-		//Treinamento com 80% das entradas
-		entradasTreinamento = (vinhos.size()*80)/100;
-		System.out.println("Entradas treinamento "+entradasTreinamento);
+		//if (args[0].contains("treinamento")){
+			//Treinamento com 80% das entradas
+			entradasTreinamento = (vinhos.size()*80)/100;
+			System.out.println("Entradas treinamento "+entradasTreinamento);
+		//}
 		
 		neuronioSaida.zeraV();
 		
@@ -56,6 +54,7 @@ public class RedeMLP {
 		neuronioSaida.setW(40, 1);
 		// -- //				      
 		
+		// Modo Treinamento //
 		while(true){
 
 			neuronioSaida.setX(0, 0);
@@ -192,5 +191,6 @@ public class RedeMLP {
 			//System.out.println("Repeat "+repeat);			
 			repeat++;
 		}
+		// FIM DO MODO TREINAMENTO //
 	}
 }

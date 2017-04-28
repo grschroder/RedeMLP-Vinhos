@@ -248,19 +248,18 @@ public class Neuronio {
 	
 	public void printPesos(String arquivo) throws IOException {
 		if (arquivo.contains("red")){
-			FileWriter fileWriter = new FileWriter("E:/GitHubRepository/RedeMLP-Vinhos/Docs/Red.csv");
-			fileWriter.write("W10="+this.w[10]+";W11="+this.w[11]+""+";W12="+this.w[12]+""+";W13="+this.w[13]+""+";W14="+this.w[14]+""+";W15="+this.w[15]+""+";W16="+this.w[16]+""+";W17="+this.w[17]+""+";W18="+this.w[18]+""+";W19="+this.w[19]+""+";W110="+this.w[110]+""+";W111="+this.w[111]+""+System.lineSeparator());
-			fileWriter.write("W20="+this.w[20]+";W21="+this.w[21]+""+";W22="+this.w[22]+""+";W23="+this.w[23]+""+";W24="+this.w[24]+""+";W25="+this.w[25]+""+";W26="+this.w[26]+""+";W27="+this.w[27]+""+";W28="+this.w[28]+""+";W29="+this.w[29]+""+";W210="+this.w[110]+""+";W211="+this.w[211]+""+System.lineSeparator());
-			fileWriter.write("W30="+this.w[30]+";W31="+this.w[31]+""+";W32="+this.w[32]+""+";W33="+this.w[33]+""+";W34="+this.w[34]+""+";W35="+this.w[35]+""+";W36="+this.w[36]+""+";W37="+this.w[37]+""+";W38="+this.w[38]+""+";W39="+this.w[39]+""+";W310="+this.w[310]+""+";W311="+this.w[311]+""+System.lineSeparator());
-			fileWriter.write("W40="+this.w[40]+";W41="+this.w[41]+""+";W42="+this.w[42]+""+";W43="+this.w[43]+System.lineSeparator());
+			FileWriter fileWriter = new FileWriter("E:/GitHubRepository/RedeMLP-Vinhos/Docs/Red-Weights.csv");
+			fileWriter.write("W10;W11;W12;W13;W14;W15;W16;W17;W18;W19;W110;W111;W20;W21;W22;W23;W24;W25;W26;W27;W28;W29;W210;W211;W30;W31;W32;W33;W34;W35;W36;W37;W38;W39;W310;W311;W40;W41;W42;W43;"+System.lineSeparator());
+			fileWriter.write(""+this.w[10]+";"+this.w[11]+";"+this.w[12]+";"+this.w[13]+";"+this.w[14]+";"+this.w[15]+";"+this.w[16]+";"+this.w[17]+";"+this.w[18]+";"+this.w[19]+";"+this.w[110]+";"+this.w[111]+";"+this.w[20]+";"+this.w[21]+";"+this.w[22]+";"+this.w[23]+";"+this.w[24]+";"+this.w[25]+";"+this.w[26]+";"+this.w[27]+";"+this.w[28]+";"+this.w[29]+";"+this.w[210]+";"+this.w[211]+";"+this.w[30]+";"+this.w[31]+";"+this.w[32]+";"+this.w[33]+";"+this.w[34]+";"+this.w[35]+";"+this.w[36]+";"+this.w[37]+";"+this.w[38]+";"+this.w[39]+";"+this.w[310]+";"+this.w[311]+";"+this.w[40]+";"+this.w[41]+";"+this.w[42]+";"+this.w[43]+System.lineSeparator());
 			fileWriter.close();
 		}
 		else {
-			FileWriter fileWriter = new FileWriter("E:/GitHubRepository/RedeMLP-Vinhos/Docs/White.csv");
-			fileWriter.write("W10="+this.w[10]+";W11="+this.w[11]+""+";W12="+this.w[12]+""+";W13="+this.w[13]+""+";W14="+this.w[14]+""+";W15="+this.w[15]+""+";W16="+this.w[16]+""+";W17="+this.w[17]+""+";W18="+this.w[18]+""+";W19="+this.w[19]+""+";W110="+this.w[110]+""+";W111="+this.w[111]+""+System.lineSeparator());
-			fileWriter.write("W20="+this.w[20]+";W21="+this.w[21]+""+";W22="+this.w[22]+""+";W23="+this.w[23]+""+";W24="+this.w[24]+""+";W25="+this.w[25]+""+";W26="+this.w[26]+""+";W27="+this.w[27]+""+";W28="+this.w[28]+""+";W29="+this.w[29]+""+";W210="+this.w[110]+""+";W211="+this.w[211]+""+System.lineSeparator());
-			fileWriter.write("W30="+this.w[30]+";W31="+this.w[31]+""+";W32="+this.w[32]+""+";W33="+this.w[33]+""+";W34="+this.w[34]+""+";W35="+this.w[35]+""+";W36="+this.w[36]+""+";W37="+this.w[37]+""+";W38="+this.w[38]+""+";W39="+this.w[39]+""+";W310="+this.w[310]+""+";W311="+this.w[311]+""+System.lineSeparator());
-			fileWriter.write("W40="+this.w[40]+";W41="+this.w[41]+""+";W42="+this.w[42]+""+";W43="+this.w[43]+System.lineSeparator());
+			FileWriter fileWriter = new FileWriter("E:/GitHubRepository/RedeMLP-Vinhos/Docs/White-Weights.csv");
+			fileWriter.write("W10;W11;W12;W13;W14;W15;W16;W17;W18;W19;W110;W111;W20;W21;W22;W23;W24;W25;W26;W27;W28;W29;W210;W211;W30;W31;W32;W33;W34;W35;W36;W37;W38;W39;W310;W311W40;W41;W42;W43;"+System.lineSeparator());
+			fileWriter.write(""+this.w[10]+";"+this.w[11]+";"+this.w[12]+";"+this.w[13]+";"+this.w[14]+";"+this.w[15]+";"+this.w[16]+";"+this.w[17]+";"+this.w[18]+";"+this.w[19]+";"+this.w[110]+";"+this.w[111]+";"+this.w[20]+";"+this.w[21]+";"+this.w[22]+";"+this.w[23]+";"+this.w[24]+";"+this.w[25]+";"+this.w[26]+";"+this.w[27]+";"+this.w[28]+";"+this.w[29]+";"+this.w[210]+";"+this.w[211]+";"+this.w[30]+";"+this.w[31]+";"+this.w[32]+";"+this.w[33]+";"+this.w[34]+";"+this.w[35]+";"+this.w[36]+";"+this.w[37]+";"+this.w[38]+";"+this.w[39]+";"+this.w[310]+";"+this.w[311]+";"+this.w[40]+";"+this.w[41]+";"+this.w[42]+";"+this.w[43]+System.lineSeparator());
+			//fileWriter.write("W20="+this.w[20]+";W21="+this.w[21]+""+";W22="+this.w[22]+""+";W23="+this.w[23]+""+";W24="+this.w[24]+""+";W25="+this.w[25]+""+";W26="+this.w[26]+""+";W27="+this.w[27]+""+";W28="+this.w[28]+""+";W29="+this.w[29]+""+";W210="+this.w[110]+""+";W211="+this.w[211]+""+System.lineSeparator());
+			//fileWriter.write("W30="+this.w[30]+";W31="+this.w[31]+""+";W32="+this.w[32]+""+";W33="+this.w[33]+""+";W34="+this.w[34]+""+";W35="+this.w[35]+""+";W36="+this.w[36]+""+";W37="+this.w[37]+""+";W38="+this.w[38]+""+";W39="+this.w[39]+""+";W310="+this.w[310]+""+";W311="+this.w[311]+""+System.lineSeparator());
+			//fileWriter.write("W40="+this.w[40]+";W41="+this.w[41]+""+";W42="+this.w[42]+""+";W43="+this.w[43]+System.lineSeparator());
 			fileWriter.close();
 		}
 	}

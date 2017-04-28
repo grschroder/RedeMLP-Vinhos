@@ -41,7 +41,7 @@ public class ImportData {
 	            }
 			return lista;
 			}
-			 else{ //if(arquivo.contains("white")){
+			 else if(arquivo.contains("white")){ //if(arquivo.contains("white")){
 				 //System.out.println("VINHO WHITE!!!!!!!!!");
 				 while ((separadorLinha = br.readLine()) != null) {
 		            	if(!primeiraVez){
@@ -56,9 +56,34 @@ public class ImportData {
 		            		vinho.setChlorides(Double.parseDouble(linha[4]));
 		            		vinho.setFreeSulfurDioxide(Double.parseDouble(linha[5])/289);
 		            		vinho.setTotalSulfurDioxide(Double.parseDouble(linha[6])/366.5);
-		            		vinho.setDensity(Double.parseDouble(linha[7])/103.898);
+		            		vinho.setDensity(Double.parseDouble(linha[7])/1.03898);
 		            		vinho.setPh(Double.parseDouble(linha[8])/3.82);
 		            		vinho.setSulphates(Double.parseDouble(linha[9])/1.08);
+		            		vinho.setAlcohol(Double.parseDouble(linha[10])/14.2);
+		            		vinho.setQuality(Double.parseDouble(linha[11])/9);
+		            		lista.add(vinho);     
+		            	}
+		            }
+				return lista;
+			 }
+			 else{ //if(arquivo.contains("white")){
+				 //System.out.println("VINHO WHITE!!!!!!!!!");
+				 while ((separadorLinha = br.readLine()) != null) {
+		            	if(!primeiraVez){
+		            		primeiraVez = true;            		
+		            	}else{
+		            		String[] linha = separadorLinha.split(separadorCampo);
+		            		Vinho vinho = new Vinho();
+		            		vinho.setFixedAcidity(Double.parseDouble(linha[0])/15.9);
+		            		vinho.setVolatileAcidity(Double.parseDouble(linha[1])/1.58);
+		            		vinho.setCitricAcid(Double.parseDouble(linha[2])/1.66);
+		            		vinho.setResidualSugar(Double.parseDouble(linha[3])/65.8);
+		            		vinho.setChlorides(Double.parseDouble(linha[4]));
+		            		vinho.setFreeSulfurDioxide(Double.parseDouble(linha[5])/289);
+		            		vinho.setTotalSulfurDioxide(Double.parseDouble(linha[6])/440);
+		            		vinho.setDensity(Double.parseDouble(linha[7])/1.03898);
+		            		vinho.setPh(Double.parseDouble(linha[8])/4.01);
+		            		vinho.setSulphates(Double.parseDouble(linha[9])/2);
 		            		vinho.setAlcohol(Double.parseDouble(linha[10])/14.2);
 		            		vinho.setQuality(Double.parseDouble(linha[11])/9);
 		            		lista.add(vinho);     
@@ -74,6 +99,49 @@ public class ImportData {
                     e.printStackTrace();
                 }
 			}	
-		}	
-	}
+		}
+	} // Término da função de import vinhos
+	
+	public void ImportWeights(String separadorCampo, String separadorLinha, String arquivo) throws IOException{
+		BufferedReader br = null;
+		try{
+            br = new BufferedReader(new FileReader(arquivo));
+			ArrayList<Neuronio> lista = new ArrayList<Neuronio>();
+			 Boolean primeiraVez = false;
+			// if(arquivo.contains("red")){
+				 System.out.println("VINHO RED!!!!!!!!!");
+	            while ((separadorLinha = br.readLine()) != null) {
+	            	if(!primeiraVez){
+	            		primeiraVez = true;            		
+	            	}
+	            	else {
+	            		String[] linha = separadorLinha.split(separadorCampo);
+	            		Neuronio neu  = new Neuronio();
+	            		neu.setW(10, Double.parseDouble(linha[0]));
+	            		neu.setW(11, Double.parseDouble(linha[1]));
+	            		neu.setW(11, Double.parseDouble(linha[1]));
+	            		neu.setW(11, Double.parseDouble(linha[1]));
+	            		neu.setW(11, Double.parseDouble(linha[1]));
+	            		neu.setW(11, Double.parseDouble(linha[1]));
+	            		neu.setW(11, Double.parseDouble(linha[1]));
+	            		neu.setW(11, Double.parseDouble(linha[1]));
+	            		neu.setW(11, Double.parseDouble(linha[1]));
+	            		neu.setW(11, Double.parseDouble(linha[1]));
+	            		neu.setW(11, Double.parseDouble(linha[1]));
+	            		
+	            	}
+	            } // fecha while
+	      // } // fecha if
+		} // fecha try
+	            finally{
+	    			if (br != null) {
+	                    try {
+	                        br.close();                      
+	                    } catch (IOException e) {
+	                        e.printStackTrace();
+	                    }
+	    			}	
+	    		}
+	} // fecha classe
+	
 }
