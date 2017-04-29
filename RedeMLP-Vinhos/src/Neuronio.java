@@ -53,36 +53,34 @@ public class Neuronio {
 		//Q’ (Vk) = Q(Vk) * (1 – Q(Vk) <- derivada da função de transferencia
 		//1/1 + exp(-a*Vk) * (1 - (1/1 + exp(-a*Vk)))
 		//y * (1 - y) * erro
-		this.g[neuNumber] = this.y[neuNumber] * (1 - this.y[neuNumber]) * erro;
+		//this.g[neuNumber] = this.y[neuNumber] * (1 - this.y[neuNumber]) * erro;
 		
 		//Tangente Hiperbolica
-		//this.g[neuNumber] = 1 - (Math.tanh(this.v[neuNumber]) * Math.tanh(this.v[neuNumber])) * erro;
+		this.g[neuNumber] = 1 - (Math.tanh(this.v[neuNumber]) * Math.tanh(this.v[neuNumber])) * erro;
 		
 		//System.out.println("G4 = "+this.g[neuNumber]);
 	}
 	
 	public void calculaGoculta(int neuNumber){
-		//DÚVIDA ABAIXO: PRA CALCULAR O GRADIENTE DA CAMADA OCULTA, A SOMATÓRIA INCLUI OS PESOS DE TODAS ENTRADAS DO NEURONIO A DIREITA?
-		//this.g[neuNumber] = this.y[neuNumber] * (1 - this.y[neuNumber]) * (this.g[4] * this.w[40] + this.g[4] * this.w[41] + this.g[4] * this.w[42] + this.g[4] * this.w[43]);
 		//Tangente Hiperbolica
 		//this.g[neuNumber] = 1 - Math.tan(this.v[neuNumber]) * Math.tan(this.v[neuNumber]) * (this.g[4] * this.w[40] + this.g[4] * this.w[41] + this.g[4] * this.w[42] + this.g[4] * this.w[43]);
 		
 		if (neuNumber == 1){
-			this.g[neuNumber] = this.y[neuNumber] * (1 - this.y[neuNumber]) * (this.g[4] * this.w[41]);
+			//this.g[neuNumber] = this.y[neuNumber] * (1 - this.y[neuNumber]) * (this.g[4] * this.w[41]);
 			//Tangente Hiperbolica
-			//this.g[neuNumber] = 1 - (Math.tanh(this.v[neuNumber]) * Math.tanh(this.v[neuNumber])) * (this.g[4] * this.w[41]);
+			this.g[neuNumber] = 1 - (Math.tanh(this.v[neuNumber]) * Math.tanh(this.v[neuNumber])) * (this.g[4] * this.w[41]);
 		}
 		
 		else if (neuNumber == 2){
-			this.g[neuNumber] = this.y[neuNumber] * (1 - this.y[neuNumber]) * (this.g[4] * this.w[42]);
+			//this.g[neuNumber] = this.y[neuNumber] * (1 - this.y[neuNumber]) * (this.g[4] * this.w[42]);
 			//Tangente Hiperbolica
-			//this.g[neuNumber] = 1 - (Math.tanh(this.v[neuNumber]) * Math.tanh(this.v[neuNumber])) * (this.g[4] * this.w[42]);
+			this.g[neuNumber] = 1 - (Math.tanh(this.v[neuNumber]) * Math.tanh(this.v[neuNumber])) * (this.g[4] * this.w[42]);
 		}
 		
 		else if (neuNumber == 3){
-			this.g[neuNumber] = this.y[neuNumber] * (1 - this.y[neuNumber]) * (this.g[4] * this.w[43]);
+			//this.g[neuNumber] = this.y[neuNumber] * (1 - this.y[neuNumber]) * (this.g[4] * this.w[43]);
 			//Tangente Hiperbolica
-			//this.g[neuNumber] = 1 - (Math.tanh(this.v[neuNumber]) * Math.tanh(this.v[neuNumber])) * (this.g[4] * this.w[43]);
+			this.g[neuNumber] = 1 - (Math.tanh(this.v[neuNumber]) * Math.tanh(this.v[neuNumber])) * (this.g[4] * this.w[43]);
 		}
 		
 		//System.out.println("G"+neuNumber+" = "+this.g[neuNumber]);
@@ -240,9 +238,9 @@ public class Neuronio {
 	
 	public void calculaY(int posV){
 		//Função de transferência
-		this.y[posV] = 1/1 + Math.exp(-1.7159*this.v[posV]);
+		//this.y[posV] = 1/1 + Math.exp(-1.7159*this.v[posV]);
 		//Tangente Hiperbolica
-		//this.y[posV] = Math.tanh(this.v[posV]);
+		this.y[posV] = Math.tanh(0.6666666667*this.v[posV]);
 		//System.out.println("Y"+posV+" = "+this.y[posV]);
 	}
 	
@@ -253,14 +251,18 @@ public class Neuronio {
 			fileWriter.write(""+this.w[10]+";"+this.w[11]+";"+this.w[12]+";"+this.w[13]+";"+this.w[14]+";"+this.w[15]+";"+this.w[16]+";"+this.w[17]+";"+this.w[18]+";"+this.w[19]+";"+this.w[110]+";"+this.w[111]+";"+this.w[20]+";"+this.w[21]+";"+this.w[22]+";"+this.w[23]+";"+this.w[24]+";"+this.w[25]+";"+this.w[26]+";"+this.w[27]+";"+this.w[28]+";"+this.w[29]+";"+this.w[210]+";"+this.w[211]+";"+this.w[30]+";"+this.w[31]+";"+this.w[32]+";"+this.w[33]+";"+this.w[34]+";"+this.w[35]+";"+this.w[36]+";"+this.w[37]+";"+this.w[38]+";"+this.w[39]+";"+this.w[310]+";"+this.w[311]+";"+this.w[40]+";"+this.w[41]+";"+this.w[42]+";"+this.w[43]+System.lineSeparator());
 			fileWriter.close();
 		}
-		else {
+		else if(arquivo.contains("white")) {
 			FileWriter fileWriter = new FileWriter("E:/GitHubRepository/RedeMLP-Vinhos/Docs/White-Weights.csv");
 			fileWriter.write("W10;W11;W12;W13;W14;W15;W16;W17;W18;W19;W110;W111;W20;W21;W22;W23;W24;W25;W26;W27;W28;W29;W210;W211;W30;W31;W32;W33;W34;W35;W36;W37;W38;W39;W310;W311W40;W41;W42;W43;"+System.lineSeparator());
 			fileWriter.write(""+this.w[10]+";"+this.w[11]+";"+this.w[12]+";"+this.w[13]+";"+this.w[14]+";"+this.w[15]+";"+this.w[16]+";"+this.w[17]+";"+this.w[18]+";"+this.w[19]+";"+this.w[110]+";"+this.w[111]+";"+this.w[20]+";"+this.w[21]+";"+this.w[22]+";"+this.w[23]+";"+this.w[24]+";"+this.w[25]+";"+this.w[26]+";"+this.w[27]+";"+this.w[28]+";"+this.w[29]+";"+this.w[210]+";"+this.w[211]+";"+this.w[30]+";"+this.w[31]+";"+this.w[32]+";"+this.w[33]+";"+this.w[34]+";"+this.w[35]+";"+this.w[36]+";"+this.w[37]+";"+this.w[38]+";"+this.w[39]+";"+this.w[310]+";"+this.w[311]+";"+this.w[40]+";"+this.w[41]+";"+this.w[42]+";"+this.w[43]+System.lineSeparator());
-			//fileWriter.write("W20="+this.w[20]+";W21="+this.w[21]+""+";W22="+this.w[22]+""+";W23="+this.w[23]+""+";W24="+this.w[24]+""+";W25="+this.w[25]+""+";W26="+this.w[26]+""+";W27="+this.w[27]+""+";W28="+this.w[28]+""+";W29="+this.w[29]+""+";W210="+this.w[110]+""+";W211="+this.w[211]+""+System.lineSeparator());
-			//fileWriter.write("W30="+this.w[30]+";W31="+this.w[31]+""+";W32="+this.w[32]+""+";W33="+this.w[33]+""+";W34="+this.w[34]+""+";W35="+this.w[35]+""+";W36="+this.w[36]+""+";W37="+this.w[37]+""+";W38="+this.w[38]+""+";W39="+this.w[39]+""+";W310="+this.w[310]+""+";W311="+this.w[311]+""+System.lineSeparator());
-			//fileWriter.write("W40="+this.w[40]+";W41="+this.w[41]+""+";W42="+this.w[42]+""+";W43="+this.w[43]+System.lineSeparator());
 			fileWriter.close();
+		}
+		else if (arquivo.contains("all")){
+			//FileWriter fileWriter = new FileWriter("E:/GitHubRepository/RedeMLP-Vinhos/Docs/All-Weights.csv");
+			FileWriter fileWriter = new FileWriter("/home/user1/Download/pesos.csv");
+			fileWriter.write("W10;W11;W12;W13;W14;W15;W16;W17;W18;W19;W110;W111;W20;W21;W22;W23;W24;W25;W26;W27;W28;W29;W210;W211;W30;W31;W32;W33;W34;W35;W36;W37;W38;W39;W310;W311W40;W41;W42;W43;"+System.lineSeparator());
+			fileWriter.write(""+this.w[10]+";"+this.w[11]+";"+this.w[12]+";"+this.w[13]+";"+this.w[14]+";"+this.w[15]+";"+this.w[16]+";"+this.w[17]+";"+this.w[18]+";"+this.w[19]+";"+this.w[110]+";"+this.w[111]+";"+this.w[20]+";"+this.w[21]+";"+this.w[22]+";"+this.w[23]+";"+this.w[24]+";"+this.w[25]+";"+this.w[26]+";"+this.w[27]+";"+this.w[28]+";"+this.w[29]+";"+this.w[210]+";"+this.w[211]+";"+this.w[30]+";"+this.w[31]+";"+this.w[32]+";"+this.w[33]+";"+this.w[34]+";"+this.w[35]+";"+this.w[36]+";"+this.w[37]+";"+this.w[38]+";"+this.w[39]+";"+this.w[310]+";"+this.w[311]+";"+this.w[40]+";"+this.w[41]+";"+this.w[42]+";"+this.w[43]+System.lineSeparator());
+			fileWriter.close();			
 		}
 	}
 	
