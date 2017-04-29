@@ -26,7 +26,7 @@ public class RedeMLP {
 		
 		Neuronio neuronioSaida = new Neuronio();
 		int repeat = 0;
-		int epocas = 0;
+		long epocas = 0;
 		double eta = 0.9d; 
 		int entradasTreinamento;
 		double erroMedio=0;
@@ -202,7 +202,7 @@ public class RedeMLP {
 				//	if tangente hiperbolica
 				//	if (erroMedio < 1246 || qtdCertos >= 12){// || epocas == 2){
 					//if formula da logistica
-					if (erroMedio < 1 || qtdCertos >= 3 || epocas == 5000000){
+					if (erroMedio < 1 || qtdCertos >= 500 || epocas == 500000000){
 						neuronioSaida.printPesos(arquivo);
 						break;
 					}
