@@ -1,0 +1,14 @@
+{
+  "numbers": [
+    {
+      "natural": "10",
+      "integer": "-1",
+      "real": "3.14159265",
+      "complex": {
+        "real": 10,
+        "imaginary": 2
+      },
+      "EOF": "yes"
+    }
+  ]
+}
