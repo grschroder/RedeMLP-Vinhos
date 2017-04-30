@@ -3,16 +3,16 @@ import java.io.*;
 public class Neuronio {
 	
 	//pesos das entradas dos neuronios w[NumerodoNeuronioeNumerodoPeso] ex: w[10] - Neuronio 1, peso da entrada 0
-	private double w[] = new double [415];
-	private double delta[] = new double [415];
-	private double g[] = new double [415];
-	private double v[] = new double [5];
-	private double y[] = new double [5];
+	private double w[] = new double [815];
+	private double delta[] = new double [815];
+	private double g[] = new double [515];
+	private double v[] = new double [10];
+	private double y[] = new double [10];
 	private double x[] = new double [12];
 	private double d;
 	
 	public void zeraV(){
-		for (int i=0; i<4; i++){
+		for (int i=0; i<10; i++){
 			this.v[i] = 0;			
 		}
 	}
@@ -144,7 +144,6 @@ public class Neuronio {
 			//System.out.println("Delta42: "+this.delta[42]);
 			//System.out.println("Delta43: "+this.delta[43]);
 		}
-		
 	}
 	
 	public void ajusteDePesos(int neuNumber){
@@ -232,7 +231,6 @@ public class Neuronio {
 			this.v[vNumber] = this.w[30] * this.x[0] + this.w[31] * this.x[1] + this.w[32] * this.x[2] + this.w[33] * this.x[3] + this.w[34] * this.x[4] + this.w[35] * this.x[5] + this.w[36] * this.x[6] + this.w[37] * this.x[7] + this.w[38] * this.x[8] + this.w[39] * this.x[9] + this.w[310] * this.x[10] + this.w[311] * this.x[11] ;
 			//System.out.println("*** V3 = "+this.v[3]);
 		}
-		
 		return v[vNumber];
 	}
 	
@@ -258,8 +256,8 @@ public class Neuronio {
 			fileWriter.close();
 		}
 		else if (arquivo.contains("all")){
-			//FileWriter fileWriter = new FileWriter("E:/GitHubRepository/RedeMLP-Vinhos/Docs/All-Weights.csv");
-			FileWriter fileWriter = new FileWriter("/home/user1/Downloads/pesos.csv");
+			FileWriter fileWriter = new FileWriter("E:/GitHubRepository/RedeMLP-Vinhos/Docs/All-Weights.csv");
+			//FileWriter fileWriter = new FileWriter("/home/user1/Downloads/pesos.csv");
 			fileWriter.write("W10;W11;W12;W13;W14;W15;W16;W17;W18;W19;W110;W111;W20;W21;W22;W23;W24;W25;W26;W27;W28;W29;W210;W211;W30;W31;W32;W33;W34;W35;W36;W37;W38;W39;W310;W311W40;W41;W42;W43;"+System.lineSeparator());
 			fileWriter.write(""+this.w[10]+";"+this.w[11]+";"+this.w[12]+";"+this.w[13]+";"+this.w[14]+";"+this.w[15]+";"+this.w[16]+";"+this.w[17]+";"+this.w[18]+";"+this.w[19]+";"+this.w[110]+";"+this.w[111]+";"+this.w[20]+";"+this.w[21]+";"+this.w[22]+";"+this.w[23]+";"+this.w[24]+";"+this.w[25]+";"+this.w[26]+";"+this.w[27]+";"+this.w[28]+";"+this.w[29]+";"+this.w[210]+";"+this.w[211]+";"+this.w[30]+";"+this.w[31]+";"+this.w[32]+";"+this.w[33]+";"+this.w[34]+";"+this.w[35]+";"+this.w[36]+";"+this.w[37]+";"+this.w[38]+";"+this.w[39]+";"+this.w[310]+";"+this.w[311]+";"+this.w[40]+";"+this.w[41]+";"+this.w[42]+";"+this.w[43]+System.lineSeparator());
 			fileWriter.close();			

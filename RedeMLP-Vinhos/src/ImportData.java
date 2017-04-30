@@ -15,7 +15,7 @@ public class ImportData {
             br = new BufferedReader(new FileReader(arquivo));
 			ArrayList<Vinho> lista = new ArrayList<Vinho>();
 			 Boolean primeiraVez = false;
-			 if(arquivo.contains("red")){
+			 if(arquivo.contains("red") ||arquivo.contains("Red")){
 				 //System.out.println("VINHO RED!!!!!!!!!");
 	            while ((separadorLinha = br.readLine()) != null) {
 	            	if(!primeiraVez){
@@ -40,7 +40,7 @@ public class ImportData {
 	            }
 			return lista;
 			}
-			 else if(arquivo.contains("white")){ //if(arquivo.contains("white")){
+			 else if(arquivo.contains("white") || arquivo.contains("White")){ //if(arquivo.contains("white")){
 				 //System.out.println("VINHO WHITE!!!!!!!!!");
 				 while ((separadorLinha = br.readLine()) != null) {
 		            	if(!primeiraVez){
@@ -85,6 +85,12 @@ public class ImportData {
 		            		vinho.setSulphates(Double.parseDouble(linha[9])/2);
 		            		vinho.setAlcohol(Double.parseDouble(linha[10])/14.2);
 		            		vinho.setQuality(Double.parseDouble(linha[11])/9);
+		            		//if (vinho.getQuality() <= 5){
+		            		//	vinho.setQuality(-1);
+		            		//}
+		            		//else if (vinho.getQuality() >5){
+		            		//	vinho.setQuality(1);
+		            		//}
 		            		lista.add(vinho);     
 		            	}
 		            }

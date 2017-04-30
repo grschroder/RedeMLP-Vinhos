@@ -9,8 +9,9 @@ public class RedeMLP {
 		String terminocampo = ";";
 		//String arquivo = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/winequality-red.csv";
 		//String arquivo = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/winequality-white.csv";
-		//String arquivo = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/winequality-all.csv"; 
-		String arquivo = "/home/user1/Downloads/teste/RedeMLP-Vinhos/RedeMLP-Vinhos/Docs/winequality-all.csv";
+		//String arquivo = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/winequality-all.csv";
+		String arquivo = args[1];
+		//String arquivo = "/home/user1/Downloads/teste/RedeMLP-Vinhos/RedeMLP-Vinhos/Docs/winequality-all.csv";
 		//Chama a classe para importar os vinhos e adicionar na lista de objetos
 		ArrayList<Vinho> vinhos;	
 		ImportData csv = new ImportData();
@@ -33,17 +34,21 @@ public class RedeMLP {
 		int qtdCertos=0;
 		double erro[] = new double[vinhos.size()];
 		
-		String modo = "treinamento";
+		//String modo = "treinamento";
+		String modo = args[0];
 		
 		//	MODO GENERALIZACAO // 
 		if (modo.contains("generalizacao")){
 			String weightFile = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/All-Weights.csv";
+			//String weightFile = "/tmp/All-Weights.csv";
 			//String weightFile = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/Red-Weights.csv";
 			//String weightFile = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/White-Weights.csv";
 			csv.ImportWeights(terminocampo, terminolinha, weightFile, neuronioSaida);
 			neuronioSaida.zeraV();
 			
-			for (int gen = 0; gen < vinhos.size() ; gen++){
+			int entradasGeneralizacao = (vinhos.size()*80)/100;
+			
+			for (int gen = entradasGeneralizacao; gen < vinhos.size() ; gen++){
 				neuronioSaida.setX(0, 0);
 				neuronioSaida.setX(1, vinhos.get(gen).FixedAcidity);
 				neuronioSaida.setX(2, vinhos.get(gen).VolatileAcidity);
@@ -57,6 +62,7 @@ public class RedeMLP {
 				neuronioSaida.setX(10, vinhos.get(gen).Sulphates);
 				neuronioSaida.setX(11, vinhos.get(gen).Alcohol);
 				neuronioSaida.setD(vinhos.get(gen).Quality);
+				//System.out.println("Qualidade: "+neuronioSaida.getD());
 				
 				neuronioSaida.calculaVoculta(1);
 				neuronioSaida.calculaVoculta(2);
@@ -76,6 +82,9 @@ public class RedeMLP {
 				}
 			}
 			System.out.println("Quantidade de acertos: "+qtdCertos);
+			int numeroEntradas = vinhos.size()-entradasGeneralizacao;
+			System.out.println("Quantidade de entradas: "+numeroEntradas);
+			//System.out.println("");
 		} //	FIM DO MODO GENERALIZACAO //
 		// MODO DE TREINAMENTO //
 		else{
@@ -132,10 +141,12 @@ public class RedeMLP {
 				neuronioSaida.calculaVoculta(1);
 				neuronioSaida.calculaVoculta(2);
 				neuronioSaida.calculaVoculta(3);
+				neuronioSaida.calculaVoculta(5);
 				
 				neuronioSaida.calculaY(1);
 				neuronioSaida.calculaY(2);
 				neuronioSaida.calculaY(3);
+				neuronioSaida.calculaY(5);
 				
 				neuronioSaida.calculaVsaida(4);
 				neuronioSaida.calculaY(4);
@@ -153,14 +164,17 @@ public class RedeMLP {
 					neuronioSaida.calculaGoculta(1);
 					neuronioSaida.calculaGoculta(2);
 					neuronioSaida.calculaGoculta(3);
+					neuronioSaida.calculaGoculta(5);
 					
 					neuronioSaida.calculaDelta(1, eta);
 					neuronioSaida.calculaDelta(2, eta);
 					neuronioSaida.calculaDelta(3, eta);
+					neuronioSaida.calculaDelta(5, eta);
 					
 					neuronioSaida.ajusteDePesos(1);
 					neuronioSaida.ajusteDePesos(2);
 					neuronioSaida.ajusteDePesos(3);
+					neuronioSaida.ajusteDePesos(5);
 				}
 				else if (erro[repeat] == 0){
 					qtdCertos++;					
@@ -197,12 +211,12 @@ public class RedeMLP {
 					System.out.println("Quantidade que deu certo: "+qtdCertos);	
 					System.out.println("Y4 "+neuronioSaida.getY(4));
 					System.out.println("V4 "+neuronioSaida.getV(4));
-					System.out.println("W11 "+neuronioSaida.getW(11));
+					System.out.println("W41 "+neuronioSaida.getW(41));
 					
 				//	if tangente hiperbolica
 				//	if (erroMedio < 1246 || qtdCertos >= 12){// || epocas == 2){
 					//if formula da logistica
-					if (erroMedio < 1 || qtdCertos >= 500 || epocas == 500000000){
+					if (erroMedio < 0.00001 || qtdCertos >= 4 || epocas == 5000){
 						neuronioSaida.printPesos(arquivo);
 						break;
 					}
