@@ -45,19 +45,19 @@ public class RedeMLP {
 				weightFile = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/all-weights.csv";
 			}
 			else if (!osName.contains("Windows") && arquivo.contains("all")) {
-				weightFile = "~/all-weights.csv";
+				weightFile = "all-weights.csv";
 			}
 			else if (osName.contains("Windows") && arquivo.contains("winequality-red")) {
 				weightFile = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/red-weights.csv";
 			}
 			else if (!osName.contains("Windows") && arquivo.contains("winequality-red")) {
-				weightFile = "~/red-weights.csv";
+				weightFile = "red-weights.csv";
 			}
 			else if (osName.contains("Windows") && arquivo.contains("winequality-white")) {
 				weightFile = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/white-weights.csv";
 			}
 			else {
-				weightFile = "~/white-weights.csv";
+				weightFile = "white-weights.csv";
 			}
 			//String weightFile = "/tmp/All-Weights.csv";
 			//String weightFile = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/Red-Weights.csv";
