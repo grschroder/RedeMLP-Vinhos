@@ -39,7 +39,14 @@ public class RedeMLP {
 		
 		//	MODO GENERALIZACAO // 
 		if (modo.contains("generalizacao")){
-			String weightFile = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/All-Weights.csv";
+			String weightFile;
+			String osName = System.getProperty("os.name");
+			if (osName.contains("Windows")){
+				weightFile = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/All-Weights.csv";
+			}
+			else {
+				weightFile = "/tmp/All-Weights.csv";
+			}
 			//String weightFile = "/tmp/All-Weights.csv";
 			//String weightFile = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/Red-Weights.csv";
 			//String weightFile = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/White-Weights.csv";
@@ -90,9 +97,6 @@ public class RedeMLP {
 		else{
 		//	Treinamento com 80% das entradas
 			entradasTreinamento = (vinhos.size()*80)/100;
-			System.out.println("Entradas treinamento "+entradasTreinamento);
-			
-		//	System.out.println("W11 "+neuronioSaida.getW(11));
 			
 			neuronioSaida.zeraV();
 			
@@ -209,9 +213,10 @@ public class RedeMLP {
 					epocas++;
 					System.out.println("Epocas: "+epocas);
 					System.out.println("Quantidade que deu certo: "+qtdCertos);	
-					System.out.println("Y4 "+neuronioSaida.getY(4));
-					System.out.println("V4 "+neuronioSaida.getV(4));
-					System.out.println("W41 "+neuronioSaida.getW(41));
+					System.out.println("Entradas treinamento "+entradasTreinamento);
+					//System.out.println("Y4 "+neuronioSaida.getY(4));
+					//System.out.println("V4 "+neuronioSaida.getV(4));
+					//System.out.println("W41 "+neuronioSaida.getW(41));
 					
 				//	if tangente hiperbolica
 				//	if (erroMedio < 1246 || qtdCertos >= 12){// || epocas == 2){
