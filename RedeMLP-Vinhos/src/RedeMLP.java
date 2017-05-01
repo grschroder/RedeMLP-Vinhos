@@ -229,12 +229,7 @@ public class RedeMLP {
 					//System.out.println("Y4 "+neuronioSaida.getY(4));
 					//System.out.println("V4 "+neuronioSaida.getV(4));
 					//System.out.println("W41 "+neuronioSaida.getW(41));
-					
-				//	if tangente hiperbolica
-				//	if (erroMedio < 1246 || qtdCertos >= 12){// || epocas == 2){
-					//if formula da logistica
-					//Melhor 3470 acertos
-					if (erroMedio < 500 || qtdCertos >= 3470 || epocas == 100000){
+					if (erroMedio < 500 || qtdCertos >= 3477 || epocas == 100000){
 						neuronioSaida.printPesos(arquivo);
 						break;
 					}
