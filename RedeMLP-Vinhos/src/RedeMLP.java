@@ -9,8 +9,8 @@ public class RedeMLP {
 		String terminocampo = ";";
 		//String arquivo = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/winequality-red.csv";
 		//String arquivo = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/winequality-white.csv";
-		//String arquivo = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/winequality-all.csv";
-		String arquivo = args[1];
+		String arquivo = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/winequality-all.csv";
+		//String arquivo = args[1];
 		//String arquivo = "/home/user1/Downloads/teste/RedeMLP-Vinhos/RedeMLP-Vinhos/Docs/winequality-all.csv";
 		//Chama a classe para importar os vinhos e adicionar na lista de objetos
 		ArrayList<Vinho> vinhos;	
@@ -28,14 +28,14 @@ public class RedeMLP {
 		Neuronio neuronioSaida = new Neuronio();
 		int repeat = 0;
 		long epocas = 0;
-		double eta = 0.9d; 
+		double eta = 1d; 
 		int entradasTreinamento;
 		double erroMedio=0;
 		int qtdCertos=0;
 		double erro[] = new double[vinhos.size()];
 		
-		//String modo = "treinamento";
-		String modo = args[0];
+		String modo = "treinamento";
+		//String modo = args[0];
 		
 		//	MODO GENERALIZACAO // 
 		if (modo.contains("generalizacao")){
@@ -233,7 +233,7 @@ public class RedeMLP {
 				//	if tangente hiperbolica
 				//	if (erroMedio < 1246 || qtdCertos >= 12){// || epocas == 2){
 					//if formula da logistica
-					if (erroMedio < 0.00001 || qtdCertos >= 4 || epocas == 5000){
+					if (erroMedio < 570 || qtdCertos >= 3500 || epocas == 5000000){
 						neuronioSaida.printPesos(arquivo);
 						break;
 					}

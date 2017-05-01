@@ -84,13 +84,13 @@ public class ImportData {
 		            		vinho.setPh(Double.parseDouble(linha[8])/4.01);
 		            		vinho.setSulphates(Double.parseDouble(linha[9])/2);
 		            		vinho.setAlcohol(Double.parseDouble(linha[10])/14.2);
-		            		vinho.setQuality(Double.parseDouble(linha[11])/9);
-		            		//if (vinho.getQuality() <= 5){
-		            		//	vinho.setQuality(-1);
-		            		//}
-		            		//else if (vinho.getQuality() >5){
-		            		//	vinho.setQuality(1);
-		            		//}
+		            		vinho.setQuality(Double.parseDouble(linha[11]));
+		            		if (vinho.getQuality() <= 5){
+		            			vinho.setQuality(-1);
+		            		}
+		            		else if (vinho.getQuality() >5){
+		            			vinho.setQuality(1);
+		            		}
 		            		lista.add(vinho);     
 		            	}
 		            }
