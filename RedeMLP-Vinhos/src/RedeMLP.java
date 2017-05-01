@@ -9,8 +9,8 @@ public class RedeMLP {
 		String terminocampo = ";";
 		//String arquivo = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/winequality-red.csv";
 		//String arquivo = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/winequality-white.csv";
-		String arquivo = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/winequality-all.csv";
-		//String arquivo = args[1];
+		//String arquivo = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/winequality-all.csv";
+		String arquivo = args[1];
 		//String arquivo = "/home/user1/Downloads/teste/RedeMLP-Vinhos/RedeMLP-Vinhos/Docs/winequality-all.csv";
 		//Chama a classe para importar os vinhos e adicionar na lista de objetos
 		ArrayList<Vinho> vinhos;	
@@ -34,8 +34,8 @@ public class RedeMLP {
 		int qtdCertos=0;
 		double erro[] = new double[vinhos.size()];
 		
-		String modo = "treinamento";
-		//String modo = args[0];
+		//String modo = "treinamento";
+		String modo = args[0];
 		
 		//	MODO GENERALIZACAO // 
 		if (modo.contains("generalizacao")){
