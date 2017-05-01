@@ -41,11 +41,23 @@ public class RedeMLP {
 		if (modo.contains("generalizacao")){
 			String weightFile;
 			String osName = System.getProperty("os.name");
-			if (osName.contains("Windows")){
+			if (osName.contains("Windows") && arquivo.contains("all")){
 				weightFile = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/all-weights.csv";
 			}
-			else {
+			else if (!osName.contains("Windows") && arquivo.contains("all")) {
 				weightFile = "/tmp/all-weights.csv";
+			}
+			else if (osName.contains("Windows") && arquivo.contains("winequality-red")) {
+				weightFile = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/red-weights.csv";
+			}
+			else if (!osName.contains("Windows") && arquivo.contains("winequality-red")) {
+				weightFile = "/tmp/red-weights.csv";
+			}
+			else if (osName.contains("Windows") && arquivo.contains("winequality-white")) {
+				weightFile = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/white-weights.csv";
+			}
+			else {
+				weightFile = "/tmp/white-weights.csv";
 			}
 			//String weightFile = "/tmp/All-Weights.csv";
 			//String weightFile = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/Red-Weights.csv";

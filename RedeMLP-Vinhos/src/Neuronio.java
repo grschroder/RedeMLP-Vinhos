@@ -248,21 +248,21 @@ public class Neuronio {
 		
 		if (arquivo.contains("winequality-red")){
 			if (osName.contains("Windows")){
-				fileWriter = new FileWriter("E:/GitHubRepository/RedeMLP-Vinhos/Docs/all-weights.csv");
+				fileWriter = new FileWriter("E:/GitHubRepository/RedeMLP-Vinhos/Docs/red-weights.csv");
 			}
 			else{
-				fileWriter = new FileWriter("/tmp/red-weights");
+				fileWriter = new FileWriter("/tmp/red-weights.csv");
 			}
 			fileWriter.write("W10;W11;W12;W13;W14;W15;W16;W17;W18;W19;W110;W111;W20;W21;W22;W23;W24;W25;W26;W27;W28;W29;W210;W211;W30;W31;W32;W33;W34;W35;W36;W37;W38;W39;W310;W311;W40;W41;W42;W43;"+System.lineSeparator());
 			fileWriter.write(""+this.w[10]+";"+this.w[11]+";"+this.w[12]+";"+this.w[13]+";"+this.w[14]+";"+this.w[15]+";"+this.w[16]+";"+this.w[17]+";"+this.w[18]+";"+this.w[19]+";"+this.w[110]+";"+this.w[111]+";"+this.w[20]+";"+this.w[21]+";"+this.w[22]+";"+this.w[23]+";"+this.w[24]+";"+this.w[25]+";"+this.w[26]+";"+this.w[27]+";"+this.w[28]+";"+this.w[29]+";"+this.w[210]+";"+this.w[211]+";"+this.w[30]+";"+this.w[31]+";"+this.w[32]+";"+this.w[33]+";"+this.w[34]+";"+this.w[35]+";"+this.w[36]+";"+this.w[37]+";"+this.w[38]+";"+this.w[39]+";"+this.w[310]+";"+this.w[311]+";"+this.w[40]+";"+this.w[41]+";"+this.w[42]+";"+this.w[43]+System.lineSeparator());
 			fileWriter.close();
 		}
-		else if(arquivo.contains("winequality-white")) {
+		else if(arquivo.contains("winequality-white.csv")) {
 			if (osName.contains("Windows")){
-				fileWriter = new FileWriter("E:/GitHubRepository/RedeMLP-Vinhos/Docs/All-Weights.csv");
+				fileWriter = new FileWriter("E:/GitHubRepository/RedeMLP-Vinhos/Docs/white-Weights.csv");
 			}
 			else{
-				fileWriter = new FileWriter("/tmp/All-Weights");
+				fileWriter = new FileWriter("/tmp/white-Weights.csv");
 			}
 			fileWriter.write("W10;W11;W12;W13;W14;W15;W16;W17;W18;W19;W110;W111;W20;W21;W22;W23;W24;W25;W26;W27;W28;W29;W210;W211;W30;W31;W32;W33;W34;W35;W36;W37;W38;W39;W310;W311W40;W41;W42;W43;"+System.lineSeparator());
 			fileWriter.write(""+this.w[10]+";"+this.w[11]+";"+this.w[12]+";"+this.w[13]+";"+this.w[14]+";"+this.w[15]+";"+this.w[16]+";"+this.w[17]+";"+this.w[18]+";"+this.w[19]+";"+this.w[110]+";"+this.w[111]+";"+this.w[20]+";"+this.w[21]+";"+this.w[22]+";"+this.w[23]+";"+this.w[24]+";"+this.w[25]+";"+this.w[26]+";"+this.w[27]+";"+this.w[28]+";"+this.w[29]+";"+this.w[210]+";"+this.w[211]+";"+this.w[30]+";"+this.w[31]+";"+this.w[32]+";"+this.w[33]+";"+this.w[34]+";"+this.w[35]+";"+this.w[36]+";"+this.w[37]+";"+this.w[38]+";"+this.w[39]+";"+this.w[310]+";"+this.w[311]+";"+this.w[40]+";"+this.w[41]+";"+this.w[42]+";"+this.w[43]+System.lineSeparator());
@@ -270,10 +270,10 @@ public class Neuronio {
 		}
 		else if (arquivo.contains("all")){
 			if (osName.contains("Windows")){
-				fileWriter = new FileWriter("E:/GitHubRepository/RedeMLP-Vinhos/Docs/All-Weights.csv");
+				fileWriter = new FileWriter("E:/GitHubRepository/RedeMLP-Vinhos/Docs/all-Weights.csv");
 			}
 			else{
-				fileWriter = new FileWriter("/tmp/All-Weights");
+				fileWriter = new FileWriter("/tmp/all-Weights.csv");
 			}
 			//FileWriter fileWriter = new FileWriter("/home/user1/Downloads/pesos.csv");
 			fileWriter.write("W10;W11;W12;W13;W14;W15;W16;W17;W18;W19;W110;W111;W20;W21;W22;W23;W24;W25;W26;W27;W28;W29;W210;W211;W30;W31;W32;W33;W34;W35;W36;W37;W38;W39;W310;W311W40;W41;W42;W43;"+System.lineSeparator());
