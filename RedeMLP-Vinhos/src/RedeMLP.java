@@ -233,7 +233,7 @@ public class RedeMLP {
 				//	if tangente hiperbolica
 				//	if (erroMedio < 1246 || qtdCertos >= 12){// || epocas == 2){
 					//if formula da logistica
-					if (erroMedio < 570 || qtdCertos >= 3500 || epocas == 5000000){
+					if (erroMedio < 500 || qtdCertos >= 3500 || epocas == 5000000){
 						neuronioSaida.printPesos(arquivo);
 						break;
 					}
