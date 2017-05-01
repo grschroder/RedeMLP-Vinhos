@@ -42,10 +42,10 @@ public class RedeMLP {
 			String weightFile;
 			String osName = System.getProperty("os.name");
 			if (osName.contains("Windows")){
-				weightFile = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/All-Weights.csv";
+				weightFile = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/all-weights.csv";
 			}
 			else {
-				weightFile = "/tmp/All-Weights.csv";
+				weightFile = "/tmp/all-weights.csv";
 			}
 			//String weightFile = "/tmp/All-Weights.csv";
 			//String weightFile = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/Red-Weights.csv";
