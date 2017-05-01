@@ -45,19 +45,19 @@ public class RedeMLP {
 				weightFile = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/all-weights.csv";
 			}
 			else if (!osName.contains("Windows") && arquivo.contains("all")) {
-				weightFile = "/tmp/all-weights.csv";
+				weightFile = "~/all-weights.csv";
 			}
 			else if (osName.contains("Windows") && arquivo.contains("winequality-red")) {
 				weightFile = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/red-weights.csv";
 			}
 			else if (!osName.contains("Windows") && arquivo.contains("winequality-red")) {
-				weightFile = "/tmp/red-weights.csv";
+				weightFile = "~/red-weights.csv";
 			}
 			else if (osName.contains("Windows") && arquivo.contains("winequality-white")) {
 				weightFile = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/white-weights.csv";
 			}
 			else {
-				weightFile = "/tmp/white-weights.csv";
+				weightFile = "~/white-weights.csv";
 			}
 			//String weightFile = "/tmp/All-Weights.csv";
 			//String weightFile = "E:/GitHubRepository/RedeMLP-Vinhos/Docs/Red-Weights.csv";
@@ -234,7 +234,7 @@ public class RedeMLP {
 				//	if (erroMedio < 1246 || qtdCertos >= 12){// || epocas == 2){
 					//if formula da logistica
 					//Melhor 3470 acertos
-					if (erroMedio < 500 || qtdCertos >= 3477 || epocas == 120000){
+					if (erroMedio < 500 || qtdCertos >= 3470 || epocas == 100000){
 						neuronioSaida.printPesos(arquivo);
 						break;
 					}
