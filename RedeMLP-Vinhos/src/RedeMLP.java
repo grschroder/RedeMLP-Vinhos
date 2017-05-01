@@ -229,7 +229,7 @@ public class RedeMLP {
 					//System.out.println("Y4 "+neuronioSaida.getY(4));
 					//System.out.println("V4 "+neuronioSaida.getV(4));
 					//System.out.println("W41 "+neuronioSaida.getW(41));
-					if (erroMedio < 500 || qtdCertos >= 3477 || epocas == 100000){
+					if (erroMedio < 500 || qtdCertos >= 3475 || epocas == 100000){
 						neuronioSaida.printPesos(arquivo);
 						break;
 					}
